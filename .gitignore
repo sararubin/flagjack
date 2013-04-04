@@ -1,2 +1,7 @@
+# Xcode
 .DS_Store
 *.xcuserdatad
+*.pbxuser
+!default.pbxuser
+*/build/*
+profile
