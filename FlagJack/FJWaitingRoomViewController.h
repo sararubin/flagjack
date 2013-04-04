@@ -12,6 +12,7 @@
 
 @interface FJWaitingRoomViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *playerTableView;
+@property BOOL refreshed;
 
 - (IBAction)refreshPlayerList:(id)sender;
 

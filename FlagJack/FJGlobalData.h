@@ -19,6 +19,7 @@
 @property BOOL isCaptain;
 @property NSMutableArray* players;
 @property NSMutableArray* playerIds;
+@property NSMutableArray* playerTeamColors;
 
 + (FJGlobalData*)shared;
 
