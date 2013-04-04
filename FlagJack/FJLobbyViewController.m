@@ -30,7 +30,7 @@
 - (IBAction)createGame:(id)sender {
 	
 	//afnetworking post data
-	NSURL *urlForPost = [NSURL URLWithString:@"http://localhost:8888/flagjack/create-game.php"];
+	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/create-game.php"];
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:urlForPost];
 	
 	NSString *authCode = @"&&^#guer16n";
@@ -74,7 +74,7 @@
 		[self textFieldShouldReturn:_gameCodeTextField];
 
 		//afnetworking post data
-		NSURL *urlForPost = [NSURL URLWithString:@"http://localhost:8888/flagjack/join-game.php"];
+		NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/join-game.php"];
 		AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:urlForPost];
 		
 		NSString *authCode = @"&&^#guer16n";

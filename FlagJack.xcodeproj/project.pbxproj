@@ -36,9 +36,9 @@
 		3C19B9C6170B805100BE626C /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9BB170B805100BE626C /* AFURLConnectionOperation.m */; };
 		3C19B9C7170B805100BE626C /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9BD170B805100BE626C /* AFXMLRequestOperation.m */; };
 		3C19B9C8170B805100BE626C /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9BF170B805100BE626C /* UIImageView+AFNetworking.m */; };
+		3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C6818F0170DD76200CB0FD0 /* texture.jpg */; };
 		3C78F991170BD38D00094EFF /* flagjack-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F990170BD38D00094EFF /* flagjack-normal.png */; };
 		3C78F993170BD39000094EFF /* flagjack-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F992170BD39000094EFF /* flagjack-retina.png */; };
-		3C78F995170BD8B800094EFF /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F994170BD8B800094EFF /* texture.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,9 +91,9 @@
 		3C19B9BD170B805100BE626C /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		3C19B9BE170B805100BE626C /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		3C19B9BF170B805100BE626C /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		3C6818F0170DD76200CB0FD0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
 		3C78F990170BD38D00094EFF /* flagjack-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-normal.png"; sourceTree = "<group>"; };
 		3C78F992170BD39000094EFF /* flagjack-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-retina.png"; sourceTree = "<group>"; };
-		3C78F994170BD8B800094EFF /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = texture.jpg; path = "/Users/IAN/Documents/NYU/6Spring13/ios/FlagJack-Work/texture.jpg"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +113,8 @@
 		3C19B972170B804600BE626C = {
 			isa = PBXGroup;
 			children = (
+				3C6818F0170DD76200CB0FD0 /* texture.jpg */,
 				3C78F992170BD39000094EFF /* flagjack-retina.png */,
-				3C78F994170BD8B800094EFF /* texture.jpg */,
 				3C78F990170BD38D00094EFF /* flagjack-normal.png */,
 				3C19B9AC170B805100BE626C /* AFNetworking */,
 				3C19B984170B804600BE626C /* FlagJack */,
@@ -271,7 +271,7 @@
 				3C19B9A6170B804700BE626C /* second@2x.png in Resources */,
 				3C78F991170BD38D00094EFF /* flagjack-normal.png in Resources */,
 				3C78F993170BD39000094EFF /* flagjack-retina.png in Resources */,
-				3C78F995170BD8B800094EFF /* texture.jpg in Resources */,
+				3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,7 +41,7 @@
 	[self textFieldShouldReturn:_nameYourselfTextField];
 	
 	//afnetworking post data
-	NSURL *urlForPost = [NSURL URLWithString:@"http://localhost:8888/flagjack/set-player-name.php"];
+	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/set-player-name.php"];
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:urlForPost];
 	
 	NSString *authCode = @"&&^#guer16n";
