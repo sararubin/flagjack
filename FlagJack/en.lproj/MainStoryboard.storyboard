@@ -98,6 +98,154 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
+        <!--Name Yourself View Controller-->
+        <scene sceneID="iCN-lp-ord">
+            <objects>
+                <viewController storyboardIdentifier="NameYourself" id="e07-aQ-nd0" customClass="FJNameYourselfViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pbN-lL-AsQ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="texture.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="R3M-oQ-hof">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="411" id="8ve-9p-D5H"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" text="name yourself" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="NdO-96-0TQ">
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="IVb-wi-go4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="49"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzL-Cq-HfG">
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rQZ-Wc-3bm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
+                                <state key="normal" title="cool, take me to waiting room">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toWaitingRoomButton:" destination="e07-aQ-nd0" eventType="touchUpInside" id="2pg-7I-GHG"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="enter name..." borderStyle="bezel" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="18" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-ob-E78">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oIe-ed-yoM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="e07-aQ-nd0" id="wQJ-63-daT"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R3M-oQ-hof" firstAttribute="leading" secondItem="pbN-lL-AsQ" secondAttribute="leading" type="default" id="5pT-df-ZdB"/>
+                            <constraint firstItem="NdO-96-0TQ" firstAttribute="top" secondItem="pbN-lL-AsQ" secondAttribute="top" type="default" id="7ow-aD-Vk9"/>
+                            <constraint firstItem="R3M-oQ-hof" firstAttribute="top" secondItem="pbN-lL-AsQ" secondAttribute="top" type="default" id="Cps-L3-Egt"/>
+                            <constraint firstItem="fs1-ob-E78" firstAttribute="leading" secondItem="pbN-lL-AsQ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cZP-as-40E"/>
+                            <constraint firstItem="NdO-96-0TQ" firstAttribute="trailing" secondItem="pbN-lL-AsQ" secondAttribute="trailing" type="default" id="eBV-bN-3AA"/>
+                            <constraint firstItem="UzL-Cq-HfG" firstAttribute="top" secondItem="fs1-ob-E78" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fg8-H4-uyN"/>
+                            <constraint firstAttribute="trailing" secondItem="UzL-Cq-HfG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hET-Fy-l9i"/>
+                            <constraint firstItem="fs1-ob-E78" firstAttribute="top" secondItem="pbN-lL-AsQ" secondAttribute="top" constant="102" id="icZ-HH-RCt"/>
+                            <constraint firstAttribute="trailing" secondItem="fs1-ob-E78" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="kS1-Dd-Uyb"/>
+                            <constraint firstItem="UzL-Cq-HfG" firstAttribute="leading" secondItem="pbN-lL-AsQ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wsV-dX-0jZ"/>
+                            <constraint firstItem="NdO-96-0TQ" firstAttribute="leading" secondItem="pbN-lL-AsQ" secondAttribute="leading" type="default" id="zBh-2E-daH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="woc-t8-eHA"/>
+                    <connections>
+                        <outlet property="nameYourselfTextField" destination="fs1-ob-E78" id="Hbm-LS-QPq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5v-OC-Gzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1039" y="-303"/>
+        </scene>
+        <!--Waiting Room View Controller-->
+        <scene sceneID="kPW-c7-Kzg">
+            <objects>
+                <viewController storyboardIdentifier="WaitingRoom" id="Hv9-2B-0qC" customClass="FJWaitingRoomViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p3b-SL-9cT">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="texture.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="t2m-d4-zxH">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="411" id="GzD-SB-phQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" text="other players" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="f7v-QR-SFt">
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="3AI-bl-9x7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="49"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="grJ-fw-kHY" customClass="FJWaitingRoomTableView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="295" id="syG-ri-YFm"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hv9-2B-0qC" id="7DY-cZ-SDV"/>
+                                    <outlet property="delegate" destination="Hv9-2B-0qC" id="Dyj-ca-2iU"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfE-wk-XHg">
+                                <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Qod-xh-lm1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="refresh list">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshPlayerList:" destination="Hv9-2B-0qC" eventType="touchUpInside" id="57Y-4C-Cnt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f7v-QR-SFt" firstAttribute="leading" secondItem="p3b-SL-9cT" secondAttribute="leading" type="default" id="8ru-iz-WjD"/>
+                            <constraint firstItem="f7v-QR-SFt" firstAttribute="top" secondItem="p3b-SL-9cT" secondAttribute="top" type="default" id="CXR-ei-1DM"/>
+                            <constraint firstItem="grJ-fw-kHY" firstAttribute="bottom" secondItem="t2m-d4-zxH" secondAttribute="bottom" type="default" id="IUO-2a-R63"/>
+                            <constraint firstItem="KfE-wk-XHg" firstAttribute="top" secondItem="p3b-SL-9cT" secondAttribute="top" constant="86" id="Iwj-Ze-29N"/>
+                            <constraint firstItem="f7v-QR-SFt" firstAttribute="trailing" secondItem="p3b-SL-9cT" secondAttribute="trailing" type="default" id="Ji7-kJ-Ntd"/>
+                            <constraint firstItem="grJ-fw-kHY" firstAttribute="trailing" secondItem="p3b-SL-9cT" secondAttribute="trailing" type="default" id="Odi-mb-EPv"/>
+                            <constraint firstItem="KfE-wk-XHg" firstAttribute="trailing" secondItem="p3b-SL-9cT" secondAttribute="trailing" type="default" id="StE-rN-5Al"/>
+                            <constraint firstItem="grJ-fw-kHY" firstAttribute="leading" secondItem="p3b-SL-9cT" secondAttribute="leading" type="default" id="avW-rw-fC5"/>
+                            <constraint firstItem="t2m-d4-zxH" firstAttribute="top" secondItem="p3b-SL-9cT" secondAttribute="top" type="default" id="hdN-Q6-ssG"/>
+                            <constraint firstItem="KfE-wk-XHg" firstAttribute="leading" secondItem="p3b-SL-9cT" secondAttribute="leading" type="default" id="mRC-En-KVu"/>
+                            <constraint firstItem="t2m-d4-zxH" firstAttribute="leading" secondItem="p3b-SL-9cT" secondAttribute="leading" type="default" id="ujr-zd-W2e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playerTableView" destination="grJ-fw-kHY" id="6Qn-A6-KLW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEy-pC-BCn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1424" y="-359"/>
+        </scene>
         <!--Second View Controller - Second-->
         <scene sceneID="13">
             <objects>
@@ -144,7 +292,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="game info" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bbb-yK-hhS">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="chat page" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bbb-yK-hhS">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="1B3-0W-hSn"/>
@@ -203,8 +351,25 @@
                 <relationship kind="outlet" name="joinButton" candidateClass="UIButton"/>
             </relationships>
         </class>
+        <class className="FJNameYourselfViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FJNameYourselfViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toWaitingRoomButton:"/>
+                <relationship kind="outlet" name="nameYourselfTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="FJSecondViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FJSecondViewController.h"/>
+        </class>
+        <class className="FJWaitingRoomTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FJWaitingRoomTableView.h"/>
+        </class>
+        <class className="FJWaitingRoomViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FJWaitingRoomViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshPlayerList:"/>
+                <relationship kind="outlet" name="playerTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AFHTTPClient.h"
+#import "FJGlobalData.h"
 
 @interface FJLobbyViewController : UIViewController
 
