@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C150272170CDA8200F01AC6 /* FJGlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150271170CDA8200F01AC6 /* FJGlobalData.m */; };
+		3C150278170CE0C900F01AC6 /* FJNameYourselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */; };
+		3C150281170CF14200F01AC6 /* FJWaitingRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */; };
+		3C150287170CF3E400F01AC6 /* FJWaitingRoomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */; };
 		3C19B97F170B804600BE626C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C19B97E170B804600BE626C /* UIKit.framework */; };
 		3C19B981170B804600BE626C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C19B980170B804600BE626C /* Foundation.framework */; };
 		3C19B983170B804600BE626C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C19B982170B804600BE626C /* CoreGraphics.framework */; };
@@ -38,6 +42,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C150270170CDA8200F01AC6 /* FJGlobalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJGlobalData.h; sourceTree = "<group>"; };
+		3C150271170CDA8200F01AC6 /* FJGlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJGlobalData.m; sourceTree = "<group>"; };
+		3C150276170CE0C900F01AC6 /* FJNameYourselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJNameYourselfViewController.h; sourceTree = "<group>"; };
+		3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJNameYourselfViewController.m; sourceTree = "<group>"; };
+		3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomViewController.m; sourceTree = "<group>"; };
+		3C150280170CF14200F01AC6 /* FJWaitingRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWaitingRoomViewController.h; sourceTree = "<group>"; };
+		3C150285170CF3E400F01AC6 /* FJWaitingRoomTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWaitingRoomTableView.h; sourceTree = "<group>"; };
+		3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomTableView.m; sourceTree = "<group>"; };
 		3C19B97B170B804600BE626C /* FlagJack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagJack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C19B97E170B804600BE626C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3C19B980170B804600BE626C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -132,15 +144,23 @@
 		3C19B984170B804600BE626C /* FlagJack */ = {
 			isa = PBXGroup;
 			children = (
-				3C19B98D170B804700BE626C /* FJAppDelegate.h */,
-				3C19B98E170B804700BE626C /* FJAppDelegate.m */,
 				3C19B996170B804700BE626C /* MainStoryboard.storyboard */,
-				3C19B999170B804700BE626C /* FJLobbyViewController.h */,
-				3C19B99A170B804700BE626C /* FJLobbyViewController.m */,
 				3C19B99C170B804700BE626C /* first.png */,
 				3C19B99E170B804700BE626C /* first@2x.png */,
+				3C19B98D170B804700BE626C /* FJAppDelegate.h */,
+				3C19B98E170B804700BE626C /* FJAppDelegate.m */,
+				3C150270170CDA8200F01AC6 /* FJGlobalData.h */,
+				3C150271170CDA8200F01AC6 /* FJGlobalData.m */,
+				3C19B999170B804700BE626C /* FJLobbyViewController.h */,
+				3C19B99A170B804700BE626C /* FJLobbyViewController.m */,
+				3C150276170CE0C900F01AC6 /* FJNameYourselfViewController.h */,
+				3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */,
 				3C19B9A0170B804700BE626C /* FJSecondViewController.h */,
 				3C19B9A1170B804700BE626C /* FJSecondViewController.m */,
+				3C150285170CF3E400F01AC6 /* FJWaitingRoomTableView.h */,
+				3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */,
+				3C150280170CF14200F01AC6 /* FJWaitingRoomViewController.h */,
+				3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */,
 				3C19B9A3170B804700BE626C /* second.png */,
 				3C19B9A5170B804700BE626C /* second@2x.png */,
 				3C19B985170B804700BE626C /* Supporting Files */,
@@ -275,6 +295,10 @@
 				3C19B9C6170B805100BE626C /* AFURLConnectionOperation.m in Sources */,
 				3C19B9C7170B805100BE626C /* AFXMLRequestOperation.m in Sources */,
 				3C19B9C8170B805100BE626C /* UIImageView+AFNetworking.m in Sources */,
+				3C150272170CDA8200F01AC6 /* FJGlobalData.m in Sources */,
+				3C150278170CE0C900F01AC6 /* FJNameYourselfViewController.m in Sources */,
+				3C150281170CF14200F01AC6 /* FJWaitingRoomViewController.m in Sources */,
+				3C150287170CF3E400F01AC6 /* FJWaitingRoomTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FJGlobalData.h"
 
 @interface FJSecondViewController : UIViewController
 
