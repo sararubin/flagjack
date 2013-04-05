@@ -100,6 +100,11 @@
 				[[FJGlobalData shared] setGameId:gameIdInt];
 				[[FJGlobalData shared] setGameCode:gameCode];
 				[[FJGlobalData shared] setIsAdmin:NO];
+				
+				UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"NameYourself"];
+				controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
+				[self addChildViewController:controller];
+				[self.view addSubview:controller.view];
 			}
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);

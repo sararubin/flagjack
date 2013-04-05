@@ -20,6 +20,8 @@
 @property NSMutableArray* players;
 @property NSMutableArray* playerIds;
 @property NSMutableArray* playerTeamColors;
+@property int orangeCaptainId;
+@property int blueCaptainId;
 
 + (FJGlobalData*)shared;
 
