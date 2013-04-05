@@ -62,6 +62,7 @@
 			controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
 			[self addChildViewController:controller];
 			[self.view addSubview:controller.view];
+			
 		}
 		
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
