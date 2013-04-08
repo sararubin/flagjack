@@ -245,16 +245,19 @@
                                     <barButtonItem title="Refresh" id="ra7-jZ-Ltr"/>
                                 </items>
                             </toolbar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Enp-i9-Whn"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Enp-i9-Whn">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="370" id="ogN-Vt-2Ga"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pDE-mb-d5R" firstAttribute="top" secondItem="Enp-i9-Whn" secondAttribute="bottom" type="default" id="0Xw-d9-h1z"/>
                             <constraint firstItem="Enp-i9-Whn" firstAttribute="trailing" secondItem="bu3-fA-DQE" secondAttribute="trailing" type="default" id="3gf-iX-gjc"/>
                             <constraint firstItem="Enp-i9-Whn" firstAttribute="top" secondItem="bu3-fA-DQE" secondAttribute="top" type="default" id="5eF-FM-eZo"/>
                             <constraint firstItem="pDE-mb-d5R" firstAttribute="leading" secondItem="bu3-fA-DQE" secondAttribute="leading" type="default" id="JJh-Dg-OdK"/>
-                            <constraint firstItem="pDE-mb-d5R" firstAttribute="bottom" secondItem="bu3-fA-DQE" secondAttribute="bottom" type="default" id="XLF-A1-2DE"/>
                             <constraint firstItem="pDE-mb-d5R" firstAttribute="trailing" secondItem="bu3-fA-DQE" secondAttribute="trailing" type="default" id="XsQ-cd-PRM"/>
-                            <constraint firstItem="Enp-i9-Whn" firstAttribute="bottom" secondItem="pDE-mb-d5R" secondAttribute="top" type="default" id="eky-Sh-iUu"/>
                             <constraint firstItem="Enp-i9-Whn" firstAttribute="leading" secondItem="bu3-fA-DQE" secondAttribute="leading" type="default" id="yhl-b1-nbw"/>
                         </constraints>
                     </view>
