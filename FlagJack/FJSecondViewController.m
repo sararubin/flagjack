@@ -27,4 +27,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)viewMap:(id)sender {
+    UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Map"];
+    controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
+    [self addChildViewController:controller];
+    [self.view addSubview:controller.view];
+}
 @end

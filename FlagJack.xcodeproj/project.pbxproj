@@ -39,6 +39,9 @@
 		3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C6818F0170DD76200CB0FD0 /* texture.jpg */; };
 		3C78F991170BD38D00094EFF /* flagjack-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F990170BD38D00094EFF /* flagjack-normal.png */; };
 		3C78F993170BD39000094EFF /* flagjack-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F992170BD39000094EFF /* flagjack-retina.png */; };
+		54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */; };
+		54419BEB1713628E00039958 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54419BEA1713628E00039958 /* MapKit.framework */; };
+		54419BEE171363AC00039958 /* FJMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54419BED171363AC00039958 /* FJMapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +97,11 @@
 		3C6818F0170DD76200CB0FD0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
 		3C78F990170BD38D00094EFF /* flagjack-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-normal.png"; sourceTree = "<group>"; };
 		3C78F992170BD39000094EFF /* flagjack-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-retina.png"; sourceTree = "<group>"; };
+		54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWaitingRoomTableViewCell.h; sourceTree = "<group>"; };
+		54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomTableViewCell.m; sourceTree = "<group>"; };
+		54419BEA1713628E00039958 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		54419BEC171363AC00039958 /* FJMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJMapViewController.h; sourceTree = "<group>"; };
+		54419BED171363AC00039958 /* FJMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJMapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54419BEB1713628E00039958 /* MapKit.framework in Frameworks */,
 				3C19B97F170B804600BE626C /* UIKit.framework in Frameworks */,
 				3C19B981170B804600BE626C /* Foundation.framework in Frameworks */,
 				3C19B983170B804600BE626C /* CoreGraphics.framework in Frameworks */,
@@ -113,6 +122,7 @@
 		3C19B972170B804600BE626C = {
 			isa = PBXGroup;
 			children = (
+				54419BEA1713628E00039958 /* MapKit.framework */,
 				3C6818F0170DD76200CB0FD0 /* texture.jpg */,
 				3C78F992170BD39000094EFF /* flagjack-retina.png */,
 				3C78F990170BD38D00094EFF /* flagjack-normal.png */,
@@ -157,8 +167,12 @@
 				3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */,
 				3C19B9A0170B804700BE626C /* FJSecondViewController.h */,
 				3C19B9A1170B804700BE626C /* FJSecondViewController.m */,
+				54419BEC171363AC00039958 /* FJMapViewController.h */,
+				54419BED171363AC00039958 /* FJMapViewController.m */,
 				3C150285170CF3E400F01AC6 /* FJWaitingRoomTableView.h */,
 				3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */,
+				54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */,
+				54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */,
 				3C150280170CF14200F01AC6 /* FJWaitingRoomViewController.h */,
 				3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */,
 				3C19B9A3170B804700BE626C /* second.png */,
@@ -299,6 +313,8 @@
 				3C150278170CE0C900F01AC6 /* FJNameYourselfViewController.m in Sources */,
 				3C150281170CF14200F01AC6 /* FJWaitingRoomViewController.m in Sources */,
 				3C150287170CF3E400F01AC6 /* FJWaitingRoomTableView.m in Sources */,
+				54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */,
+				54419BEE171363AC00039958 /* FJMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
