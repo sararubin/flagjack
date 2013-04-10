@@ -200,7 +200,7 @@
                                     <constraint firstAttribute="height" constant="50" id="9E6-dv-ihz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="18"/>
-                                <state key="normal" title="view da map">
+                                <state key="normal" title="view the map">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
