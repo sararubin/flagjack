@@ -208,7 +208,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createGame:" destination="2" eventType="touchUpInside" id="9vf-7V-sgh"/>
                                     <action selector="viewMap:" destination="3" eventType="touchUpInside" id="pdo-yc-R3D"/>
                                 </connections>
                             </button>
