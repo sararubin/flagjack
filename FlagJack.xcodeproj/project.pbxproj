@@ -41,8 +41,10 @@
 		3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C6818F0170DD76200CB0FD0 /* texture.jpg */; };
 		3C78F991170BD38D00094EFF /* flagjack-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F990170BD38D00094EFF /* flagjack-normal.png */; };
 		3C78F993170BD39000094EFF /* flagjack-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F992170BD39000094EFF /* flagjack-retina.png */; };
+		54265B4817151817006E7669 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54265B4717151817006E7669 /* CoreLocation.framework */; };
 		54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */; };
 		54419BEB1713628E00039958 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54419BEA1713628E00039958 /* MapKit.framework */; };
+		54C39BAF1724A01400E0B527 /* FJTeammateAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C39BAE1724A01400E0B527 /* FJTeammateAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,9 +104,12 @@
 		3C6818F0170DD76200CB0FD0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
 		3C78F990170BD38D00094EFF /* flagjack-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-normal.png"; sourceTree = "<group>"; };
 		3C78F992170BD39000094EFF /* flagjack-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-retina.png"; sourceTree = "<group>"; };
+		54265B4717151817006E7669 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWaitingRoomTableViewCell.h; sourceTree = "<group>"; };
 		54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomTableViewCell.m; sourceTree = "<group>"; };
 		54419BEA1713628E00039958 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		54C39BAD1724A01400E0B527 /* FJTeammateAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTeammateAnnotation.h; sourceTree = "<group>"; };
+		54C39BAE1724A01400E0B527 /* FJTeammateAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTeammateAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54265B4817151817006E7669 /* CoreLocation.framework in Frameworks */,
 				54419BEB1713628E00039958 /* MapKit.framework in Frameworks */,
 				3C19B97F170B804600BE626C /* UIKit.framework in Frameworks */,
 				3C19B981170B804600BE626C /* Foundation.framework in Frameworks */,
@@ -125,6 +131,7 @@
 		3C19B972170B804600BE626C = {
 			isa = PBXGroup;
 			children = (
+				54265B4717151817006E7669 /* CoreLocation.framework */,
 				3C6818F0170DD76200CB0FD0 /* texture.jpg */,
 				3C78F992170BD39000094EFF /* flagjack-retina.png */,
 				3C78F990170BD38D00094EFF /* flagjack-normal.png */,
@@ -174,6 +181,8 @@
 				3C19B9A1170B804700BE626C /* FJMapViewController.m */,
 				3C2DDE391714D9C9002E9E18 /* FJFlagAnnotation.h */,
 				3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */,
+				54C39BAD1724A01400E0B527 /* FJTeammateAnnotation.h */,
+				54C39BAE1724A01400E0B527 /* FJTeammateAnnotation.m */,
 				3C150285170CF3E400F01AC6 /* FJWaitingRoomTableView.h */,
 				3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */,
 				54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */,
@@ -321,6 +330,7 @@
 				54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */,
 				3C2DDE381714D59E002E9E18 /* FJNoGameYetViewController.m in Sources */,
 				3C2DDE3B1714D9C9002E9E18 /* FJFlagAnnotation.m in Sources */,
+				54C39BAF1724A01400E0B527 /* FJTeammateAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +419,8 @@
 				GCC_PREFIX_HEADER = "FlagJack/FlagJack-Prefix.pch";
 				INFOPLIST_FILE = "FlagJack/FlagJack-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -420,6 +432,8 @@
 				GCC_PREFIX_HEADER = "FlagJack/FlagJack-Prefix.pch";
 				INFOPLIST_FILE = "FlagJack/FlagJack-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
