@@ -12,6 +12,7 @@
 
 @property int myId;
 @property int gameId;
+@property NSString *myTeamColor;
 @property NSString *myName;
 @property NSString *gameCode;
 @property NSString *team;
