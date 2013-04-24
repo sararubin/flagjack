@@ -46,6 +46,10 @@
 	
 	[self getPlayerList];
 	
+	//gotta save my color
+	int indexOfMe = [[[FJGlobalData shared] playerIds] indexOfObject:[NSString stringWithFormat:@"%d",[[FJGlobalData shared] myId]]];
+	[[FJGlobalData shared] setMyTeamColor:[[[FJGlobalData shared] playerTeamColors]objectAtIndex:indexOfMe]];
+	
 	if([[FJGlobalData shared] isAdmin]){
 		if([[FJGlobalData shared] orangeCaptainId] == 0 || [[FJGlobalData shared] blueCaptainId] == 0  || [[[FJGlobalData shared] playerTeamColors] containsObject:@"none"] ){
 			UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Setup Problems!" message:@"Is everyone on a team? Do both teams have a captain?" delegate:self cancelButtonTitle:@"oops, I'll check" otherButtonTitles:nil];
