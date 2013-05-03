@@ -1,5 +1,5 @@
 //
-//  FJTeammateAnnotation.h
+//  FJTeammate Annotation.h
 //  FlagJack
 //
 //  Created by srubin13 on 4/21/13.
@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-
 
 @interface FJTeammateAnnotation : NSObject <MKAnnotation>
 
@@ -22,6 +21,7 @@
                                    andName: (NSString*)name
                                andLocation: (NSString*)location;
 
+- (void)print;
 
 
 @end

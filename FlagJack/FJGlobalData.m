@@ -11,6 +11,7 @@
 @implementation FJGlobalData
 
 static FJGlobalData *shared = nil;
+NSString *authCode = @"&&^#guer16n";
 
 + (FJGlobalData *)shared {
     if (shared == nil) {

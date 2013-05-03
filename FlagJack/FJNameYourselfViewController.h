@@ -13,5 +13,4 @@
 @interface FJNameYourselfViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *nameYourselfTextField;
 - (IBAction)toWaitingRoomButton:(id)sender;
-
 @end

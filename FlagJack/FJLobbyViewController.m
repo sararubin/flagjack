@@ -50,6 +50,7 @@
 		
 		[[FJGlobalData shared] setMyId:myIdInt];
 		[[FJGlobalData shared] setGameId:gameIdInt];
+        [[FJGlobalData shared] setGameIdStr:gameId];
 		[[FJGlobalData shared] setGameCode:gameCode];
 		[[FJGlobalData shared] setIsAdmin:YES];
 		

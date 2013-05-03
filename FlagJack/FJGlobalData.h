@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface FJGlobalData : NSObject
 
+
+//these variables do not change after being declared once when the game is created.
 @property int myId;
 @property int gameId;
+@property NSString *gameIdStr;
 @property NSString *myTeamColor;
 @property NSString *myName;
 @property NSString *gameCode;
@@ -23,6 +27,13 @@
 @property NSMutableArray* playerTeamColors;
 @property int orangeCaptainId;
 @property int blueCaptainId;
+
+//should this also be a property?
+extern NSString *authCode;
+
+//these variables can change
+@property CLLocationCoordinate2D myFlagLocation;
+@property CLLocationCoordinate2D enemyFlagLocation;
 
 + (FJGlobalData*)shared;
 

@@ -8,10 +8,6 @@
 
 #import "FJTeammateAnnotation.h"
 
-@interface FJTeammateAnnotation ()
-
-@end
-
 @implementation FJTeammateAnnotation
 
 - (FJTeammateAnnotation*) initWithCoordinate: (CLLocationCoordinate2D)coordinate
@@ -31,6 +27,10 @@
 
 - (NSString *)subtitle {
     return _location;
+}
+
+- (void)print {
+    NSLog(@"Teammate %@", _name);
 }
 
 @end
