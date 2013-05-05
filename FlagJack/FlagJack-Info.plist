@@ -14,8 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>flagjack-retina.png</string>
-				<string>flagjack-normal.png</string>
+				<string>logo-retina.png</string>
+				<string>logo-normal.png</string>
 			</array>
 		</dict>
 	</dict>

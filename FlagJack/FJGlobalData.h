@@ -22,6 +22,7 @@
 @property NSString *team;
 @property BOOL isAdmin;
 @property BOOL isCaptain;
+@property BOOL gameHasStarted;
 @property NSMutableArray* players;
 @property NSMutableArray* playerIds;
 @property NSMutableArray* playerTeamColors;

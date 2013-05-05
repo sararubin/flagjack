@@ -7,6 +7,7 @@
 //
 
 #import "FJNoGameYetViewController.h"
+#import "FJGlobalData.h"
 
 @interface FJNoGameYetViewController ()
 
@@ -29,6 +30,14 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+	if([[FJGlobalData shared] gameHasStarted]){
+		[self viewMap];
+	}else{
+		//game hasn't started yet
+	}
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -36,7 +45,7 @@
 }
 
 
-- (IBAction)viewMap:(id)sender {
+- (void)viewMap{
     UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Map"];
     controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
     [self addChildViewController:controller];

@@ -22,11 +22,7 @@
 		3C19B995170B804700BE626C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B994170B804700BE626C /* Default-568h@2x.png */; };
 		3C19B998170B804700BE626C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B996170B804700BE626C /* MainStoryboard.storyboard */; };
 		3C19B99B170B804700BE626C /* FJLobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B99A170B804700BE626C /* FJLobbyViewController.m */; };
-		3C19B99D170B804700BE626C /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B99C170B804700BE626C /* first.png */; };
-		3C19B99F170B804700BE626C /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B99E170B804700BE626C /* first@2x.png */; };
 		3C19B9A2170B804700BE626C /* FJMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9A1170B804700BE626C /* FJMapViewController.m */; };
-		3C19B9A4170B804700BE626C /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B9A3170B804700BE626C /* second.png */; };
-		3C19B9A6170B804700BE626C /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B9A5170B804700BE626C /* second@2x.png */; };
 		3C19B9C0170B805100BE626C /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9AE170B805100BE626C /* AFHTTPClient.m */; };
 		3C19B9C1170B805100BE626C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9B0170B805100BE626C /* AFHTTPRequestOperation.m */; };
 		3C19B9C2170B805100BE626C /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9B2170B805100BE626C /* AFImageRequestOperation.m */; };
@@ -38,9 +34,12 @@
 		3C19B9C8170B805100BE626C /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9BF170B805100BE626C /* UIImageView+AFNetworking.m */; };
 		3C2DDE381714D59E002E9E18 /* FJNoGameYetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */; };
 		3C2DDE3B1714D9C9002E9E18 /* FJFlagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */; };
+		3C5F4E2E1736EE2B00E8FF76 /* FJDisclosureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */; };
+		3C6320891734871B0024C21B /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C6320871734871B0024C21B /* setup.png */; };
+		3C63208A1734871B0024C21B /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C6320881734871B0024C21B /* map.png */; };
+		3C63208C17348C250024C21B /* logo-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C63208B17348C250024C21B /* logo-retina.png */; };
+		3C63208E17348C320024C21B /* logo-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C63208D17348C320024C21B /* logo-normal.png */; };
 		3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C6818F0170DD76200CB0FD0 /* texture.jpg */; };
-		3C78F991170BD38D00094EFF /* flagjack-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F990170BD38D00094EFF /* flagjack-normal.png */; };
-		3C78F993170BD39000094EFF /* flagjack-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C78F992170BD39000094EFF /* flagjack-retina.png */; };
 		54265B4817151817006E7669 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54265B4717151817006E7669 /* CoreLocation.framework */; };
 		54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */; };
 		54419BEB1713628E00039958 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54419BEA1713628E00039958 /* MapKit.framework */; };
@@ -72,12 +71,8 @@
 		3C19B997170B804700BE626C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3C19B999170B804700BE626C /* FJLobbyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJLobbyViewController.h; sourceTree = "<group>"; };
 		3C19B99A170B804700BE626C /* FJLobbyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJLobbyViewController.m; sourceTree = "<group>"; };
-		3C19B99C170B804700BE626C /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		3C19B99E170B804700BE626C /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		3C19B9A0170B804700BE626C /* FJMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJMapViewController.h; sourceTree = "<group>"; };
 		3C19B9A1170B804700BE626C /* FJMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJMapViewController.m; sourceTree = "<group>"; };
-		3C19B9A3170B804700BE626C /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		3C19B9A5170B804700BE626C /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		3C19B9AD170B805100BE626C /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		3C19B9AE170B805100BE626C /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		3C19B9AF170B805100BE626C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -101,9 +96,13 @@
 		3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJNoGameYetViewController.m; sourceTree = "<group>"; };
 		3C2DDE391714D9C9002E9E18 /* FJFlagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFlagAnnotation.h; sourceTree = "<group>"; };
 		3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFlagAnnotation.m; sourceTree = "<group>"; };
+		3C5F4E2C1736EE2B00E8FF76 /* FJDisclosureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FJDisclosureViewController.h; path = ../FJDisclosureViewController.h; sourceTree = "<group>"; };
+		3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FJDisclosureViewController.m; path = ../FJDisclosureViewController.m; sourceTree = "<group>"; };
+		3C6320871734871B0024C21B /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setup.png; path = ../../../../../Pictures/setup.png; sourceTree = "<group>"; };
+		3C6320881734871B0024C21B /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = ../../../../../Pictures/map.png; sourceTree = "<group>"; };
+		3C63208B17348C250024C21B /* logo-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-retina.png"; sourceTree = "<group>"; };
+		3C63208D17348C320024C21B /* logo-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-normal.png"; sourceTree = "<group>"; };
 		3C6818F0170DD76200CB0FD0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
-		3C78F990170BD38D00094EFF /* flagjack-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-normal.png"; sourceTree = "<group>"; };
-		3C78F992170BD39000094EFF /* flagjack-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flagjack-retina.png"; sourceTree = "<group>"; };
 		54265B4717151817006E7669 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWaitingRoomTableViewCell.h; sourceTree = "<group>"; };
 		54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomTableViewCell.m; sourceTree = "<group>"; };
@@ -131,10 +130,12 @@
 		3C19B972170B804600BE626C = {
 			isa = PBXGroup;
 			children = (
+				3C63208D17348C320024C21B /* logo-normal.png */,
+				3C63208B17348C250024C21B /* logo-retina.png */,
+				3C6320871734871B0024C21B /* setup.png */,
+				3C6320881734871B0024C21B /* map.png */,
 				54265B4717151817006E7669 /* CoreLocation.framework */,
 				3C6818F0170DD76200CB0FD0 /* texture.jpg */,
-				3C78F992170BD39000094EFF /* flagjack-retina.png */,
-				3C78F990170BD38D00094EFF /* flagjack-normal.png */,
 				3C19B9AC170B805100BE626C /* AFNetworking */,
 				3C19B984170B804600BE626C /* FlagJack */,
 				3C19B97D170B804600BE626C /* Frameworks */,
@@ -164,23 +165,22 @@
 		3C19B984170B804600BE626C /* FlagJack */ = {
 			isa = PBXGroup;
 			children = (
-				3C19B996170B804700BE626C /* MainStoryboard.storyboard */,
-				3C2DDE361714D59E002E9E18 /* FJNoGameYetViewController.h */,
-				3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */,
-				3C19B99C170B804700BE626C /* first.png */,
-				3C19B99E170B804700BE626C /* first@2x.png */,
+				3C5F4E2C1736EE2B00E8FF76 /* FJDisclosureViewController.h */,
+				3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */,
 				3C19B98D170B804700BE626C /* FJAppDelegate.h */,
 				3C19B98E170B804700BE626C /* FJAppDelegate.m */,
+				3C2DDE391714D9C9002E9E18 /* FJFlagAnnotation.h */,
+				3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */,
 				3C150270170CDA8200F01AC6 /* FJGlobalData.h */,
 				3C150271170CDA8200F01AC6 /* FJGlobalData.m */,
 				3C19B999170B804700BE626C /* FJLobbyViewController.h */,
 				3C19B99A170B804700BE626C /* FJLobbyViewController.m */,
-				3C150276170CE0C900F01AC6 /* FJNameYourselfViewController.h */,
-				3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */,
 				3C19B9A0170B804700BE626C /* FJMapViewController.h */,
 				3C19B9A1170B804700BE626C /* FJMapViewController.m */,
-				3C2DDE391714D9C9002E9E18 /* FJFlagAnnotation.h */,
-				3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */,
+				3C150276170CE0C900F01AC6 /* FJNameYourselfViewController.h */,
+				3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */,
+				3C2DDE361714D59E002E9E18 /* FJNoGameYetViewController.h */,
+				3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */,
 				54C39BAD1724A01400E0B527 /* FJTeammateAnnotation.h */,
 				54C39BAE1724A01400E0B527 /* FJTeammateAnnotation.m */,
 				3C150285170CF3E400F01AC6 /* FJWaitingRoomTableView.h */,
@@ -189,8 +189,7 @@
 				54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */,
 				3C150280170CF14200F01AC6 /* FJWaitingRoomViewController.h */,
 				3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */,
-				3C19B9A3170B804700BE626C /* second.png */,
-				3C19B9A5170B804700BE626C /* second@2x.png */,
+				3C19B996170B804700BE626C /* MainStoryboard.storyboard */,
 				3C19B985170B804700BE626C /* Supporting Files */,
 			);
 			path = FlagJack;
@@ -293,13 +292,11 @@
 				3C19B993170B804700BE626C /* Default@2x.png in Resources */,
 				3C19B995170B804700BE626C /* Default-568h@2x.png in Resources */,
 				3C19B998170B804700BE626C /* MainStoryboard.storyboard in Resources */,
-				3C19B99D170B804700BE626C /* first.png in Resources */,
-				3C19B99F170B804700BE626C /* first@2x.png in Resources */,
-				3C19B9A4170B804700BE626C /* second.png in Resources */,
-				3C19B9A6170B804700BE626C /* second@2x.png in Resources */,
-				3C78F991170BD38D00094EFF /* flagjack-normal.png in Resources */,
-				3C78F993170BD39000094EFF /* flagjack-retina.png in Resources */,
 				3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */,
+				3C6320891734871B0024C21B /* setup.png in Resources */,
+				3C63208A1734871B0024C21B /* map.png in Resources */,
+				3C63208C17348C250024C21B /* logo-retina.png in Resources */,
+				3C63208E17348C320024C21B /* logo-normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +328,7 @@
 				3C2DDE381714D59E002E9E18 /* FJNoGameYetViewController.m in Sources */,
 				3C2DDE3B1714D9C9002E9E18 /* FJFlagAnnotation.m in Sources */,
 				54C39BAF1724A01400E0B527 /* FJTeammateAnnotation.m in Sources */,
+				3C5F4E2E1736EE2B00E8FF76 /* FJDisclosureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,10 +419,12 @@
 		3C19B9AA170B804700BE626C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ian Guerin (TXLWRH3ZZ7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlagJack/FlagJack-Prefix.pch";
 				INFOPLIST_FILE = "FlagJack/FlagJack-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A9D55F07-B344-4EB7-BDC5-CB70EF03555C";
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -434,10 +434,12 @@
 		3C19B9AB170B804700BE626C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ian Guerin (TXLWRH3ZZ7)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlagJack/FlagJack-Prefix.pch";
 				INFOPLIST_FILE = "FlagJack/FlagJack-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A9D55F07-B344-4EB7-BDC5-CB70EF03555C";
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

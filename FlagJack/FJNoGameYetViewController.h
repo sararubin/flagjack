@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FJNoGameYetViewController : UIViewController
-- (IBAction)viewMap:(id)sender;
+- (void)viewMap;
 
 @end

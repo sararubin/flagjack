@@ -10,31 +10,29 @@
 
 @implementation FJMapViewController
 
-@synthesize teammates;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-    teammates = [[NSMutableDictionary alloc] init];
+    _teammates = [[NSMutableDictionary alloc] init];
     _flags = [[NSMutableDictionary alloc] init];
+	_enemies = [[NSMutableDictionary alloc] init];
 
     _mapView.showsUserLocation = YES;
     
-    [self centerOnMe];
     [self plotFlags];
 	[self plotTeammates];
+	[self centerOnMe];
 }
 
 - (void)plotFlags {
     //if i'm not frozen, do this stuff..else, do nothing
     
-    [self getFlags];
-    for(id key in _flags) {
-        [_mapView addAnnotation:[_flags objectForKey:key]];
+	[self getFlags];
+	for(id key in _flags) {
+		[_mapView addAnnotation:[_flags objectForKey:key]];
 	}
-	
 }
 
 - (void)plotTeammates {
@@ -42,12 +40,25 @@
     //if i'm not frozen, do this stuff..else, do nothing
     
     [self getTeammates];
-    for(id key in teammates) {
-        [_mapView addAnnotation:[teammates objectForKey:key]];
+	for(id key in _teammates) {
+		[_mapView addAnnotation:[_teammates objectForKey:key]];
 	}
+	NSLog(@"teammates: %@", _teammates);
+}
+- (void)plotEnemies{
+    
+    //if i'm not frozen, do this stuff..else, do nothing
+    
+    [self getEnemies];
+	for(id key in _enemies) {
+		[_mapView addAnnotation:[_enemies objectForKey:key]];
+	}
+	NSLog(@"enemies: %@", _enemies);
 }
 
 - (void)getTeammates {
+
+	
     //afnetworking post data
 	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/get-player-list-with-location.php"];
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:urlForPost];
@@ -65,7 +76,7 @@
 			NSArray *tokens = [responseStr componentsSeparatedByString:@"!@!@"];
 			NSMutableArray *words = [[NSMutableArray alloc]initWithArray:tokens];
 			[words removeObjectAtIndex: [words count]-1];
-			
+		
 			NSMutableArray *titles = [[NSMutableArray alloc]init];
 			NSMutableArray *subs = [[NSMutableArray alloc]init];
 			NSMutableArray *lats = [[NSMutableArray alloc]init];
@@ -93,7 +104,8 @@
 				}
                                 
 				FJTeammateAnnotation* player = [[FJTeammateAnnotation alloc] initWithCoordinate:playerCoord andName:playerName andLocation: playerTeamColor];
-                [teammates setObject:player forKey:playerName];
+                [_teammates setObject:player forKey:playerName];
+				
             }
 		}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -125,7 +137,7 @@
 			NSMutableArray *lats = [[NSMutableArray alloc]init];
 			NSMutableArray *longs = [[NSMutableArray alloc]init];
 			NSMutableArray *ids = [[NSMutableArray alloc]init];
-            
+			
 			for(int i = 0; i < [words count]; i+=5){
 				[titles addObject: words[i]];//the person's name
 				[subs addObject: words[i+1]];//the person's team color
@@ -133,7 +145,7 @@
 				[longs addObject: words[i+3]];//the person's longitude
 				[ids addObject: words[i+4]];//the person's id
 			}
-			
+
 			for(int i = 0; i < [titles count]; i++){
 				CLLocationCoordinate2D playerCoord;
 				playerCoord.latitude = [lats[i] doubleValue];
@@ -168,7 +180,7 @@
 	[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 		if([responseStr isEqualToString:@"failure"]){
-			NSLog(@"failed to get playerlist");
+			NSLog(@"failed to get flaglist");
 		}else{
 			NSArray *tokens = [responseStr componentsSeparatedByString:@"!@!@"];
 			NSMutableArray *words = [[NSMutableArray alloc]initWithArray:tokens];
@@ -233,6 +245,8 @@
 
     [self centerOnMe];
     [self plotTeammates];
+	[self plotFlags];
+	[self plotEnemies];
 }
 
 - (IBAction)whereAmI:(id)sender {
@@ -308,7 +322,6 @@
         return pinView;
     }
     else if ([annotation isKindOfClass:[FJTeammateAnnotation class]]) { // for teammates
-        //I FEEL LIKE THIS SHOULD BE A BLINKING DOT LIKE MY LOCATION IS
 		
 		
 		static NSString *teammateAnnotationIdentifier = @"teammateAnnotationIdentifier";
@@ -322,7 +335,10 @@
             teammatePinView.canShowCallout = YES;
             teammatePinView.animatesDrop = NO;
             teammatePinView.pinColor = MKPinAnnotationColorRed;
-                
+            
+			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+			teammatePinView.rightCalloutAccessoryView = rightButton;
+						
             return teammatePinView;
             
         } else {
@@ -332,6 +348,19 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
+calloutAccessoryControlTapped:(UIControl *)control {
+
+	int index = [[[FJGlobalData shared] players]indexOfObject:view.annotation.title];
+	int theId = [[[[FJGlobalData shared] playerIds]objectAtIndex:index] intValue];
+	NSLog(@"%d", theId);
+	
+	UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Disclosure"];
+    controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
+    [self addChildViewController:controller];
+    [self.view addSubview:controller.view];
 }
 
 @end
