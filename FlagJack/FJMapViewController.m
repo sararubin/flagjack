@@ -43,7 +43,6 @@
 	for(id key in _teammates) {
 		[_mapView addAnnotation:[_teammates objectForKey:key]];
 	}
-	NSLog(@"teammates: %@", _teammates);
 }
 - (void)plotEnemies{
     
@@ -53,7 +52,6 @@
 	for(id key in _enemies) {
 		[_mapView addAnnotation:[_enemies objectForKey:key]];
 	}
-	NSLog(@"enemies: %@", _enemies);
 }
 
 - (void)getTeammates {
@@ -355,7 +353,6 @@ calloutAccessoryControlTapped:(UIControl *)control {
 
 	int index = [[[FJGlobalData shared] players]indexOfObject:view.annotation.title];
 	int theId = [[[[FJGlobalData shared] playerIds]objectAtIndex:index] intValue];
-	NSLog(@"%d", theId);
 	
 	UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Disclosure"];
     controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
