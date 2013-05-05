@@ -39,12 +39,18 @@
 	
 }
 
-
-
+- (void)viewDidAppear:(BOOL)animated{
+	if([[FJGlobalData shared] gameHasStarted]){
+		[_playerTableView reloadData];
+	}else{
+		//game hasn't started yet
+	}
+}
 
 - (IBAction)startGame:(id)sender {
 	
 	[self getPlayerList];
+	[[FJGlobalData shared] setGameHasStarted:YES];
 	
 	//gotta save my color
 	int indexOfMe = [[[FJGlobalData shared] playerIds] indexOfObject:[NSString stringWithFormat:@"%d",[[FJGlobalData shared] myId]]];

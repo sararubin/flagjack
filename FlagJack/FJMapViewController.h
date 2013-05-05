@@ -20,7 +20,7 @@ extern int ENEMY_RADIUS;
 extern int FLAG_RADIUS;
 
 @property (nonatomic, retain) NSMutableDictionary *teammates;
-@property (nonatomic) NSMutableDictionary *enemies;
+@property (nonatomic, retain) NSMutableDictionary *enemies;
 @property (nonatomic, retain) NSMutableDictionary *flags;
 
 
