@@ -20,7 +20,7 @@
     [super viewDidLoad];
 		
 	if([[FJGlobalData shared]isAdmin]){
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Final Setup!" message:@"Assign each player to a team, and chose team captains!" delegate:self cancelButtonTitle:@"okay, will do" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Final Setup!" message:@"Assign each player to a team, and choose team captains!" delegate:self cancelButtonTitle:@"okay, will do" otherButtonTitles:nil];
 		[alert show];
 	}else{
 		//you must be a normal player

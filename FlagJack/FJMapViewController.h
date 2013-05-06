@@ -24,6 +24,7 @@ extern int FLAG_RADIUS;
 @property (nonatomic, retain) NSMutableDictionary *enemies;
 @property (nonatomic, retain) NSMutableDictionary *flags;
 
+@property (weak) NSTimer *timer;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 //@property (strong, nonatomic) CLLocationManager *locationManager;
