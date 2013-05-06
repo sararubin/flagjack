@@ -25,6 +25,7 @@ extern int FLAG_RADIUS;
 @property (nonatomic, retain) NSMutableDictionary *flags;
 
 @property (weak) NSTimer *timer;
+@property UILongPressGestureRecognizer *userPinDrop;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 //@property (strong, nonatomic) CLLocationManager *locationManager;
@@ -33,6 +34,8 @@ extern int FLAG_RADIUS;
 - (IBAction)whereAmI:(id)sender;
 
 - (void)centerOnMe;
+
+- (void)plantFlag;
 
 - (void)plotTeammates;
 - (void)plotFlags;

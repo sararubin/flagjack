@@ -20,9 +20,16 @@
     _flags = [[NSMutableDictionary alloc] init];
 	_enemies = [[NSMutableDictionary alloc] init];
     
+    
+    //put this in the plantFlags method
     _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(targetMethod:) userInfo:nil repeats:YES];
 
     _mapView.showsUserLocation = YES;
+    
+    //add ui so that user can drop pin for flag
+    _userPinDrop = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(userPinDrop:)];
+    _userPinDrop.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    [self.mapView addGestureRecognizer:_userPinDrop];
     
     //set game "field"
     CLLocationCoordinate2D coords[4] = {{40.719909, -74.010451}, {40.715265,-73.995323}, {40.802437, -73.934582}, {40.815889,-73.959345}};
@@ -475,6 +482,27 @@ calloutAccessoryControlTapped:(UIControl *)control {
     [self plotFlags];
     [self plotEnemies];
     
+}
+
+- (void)userPinDrop:(UIGestureRecognizer *)gestureRecognizer {
+    
+    //if i am not a captain, I cannot place flag
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan && ![[FJGlobalData shared] isCaptain]) {
+        return;
+    }
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
+    CLLocationCoordinate2D touchCoord =
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
+    
+    NSString *teamColor = [[FJGlobalData shared] myTeamColor];
+    NSString *flagTitle = [teamColor isEqualToString:@"blue"] ? @"Blue Flag" : @"Orange Flag";
+    
+    FJFlagAnnotation *flag = [[FJFlagAnnotation alloc] initWithCoordinate:touchCoord andTitle:flagTitle andSubtitle:teamColor];
+    [self.mapView addAnnotation:flag];
+    
+    //can only add one flag to map
+    [self.mapView removeGestureRecognizer:_userPinDrop];
 }
 
 @end
