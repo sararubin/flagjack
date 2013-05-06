@@ -11,20 +11,23 @@
 
 @implementation FJMapViewController
 
+const int ENEMY_RADIUS = 200;
+const int FLAG_ZOOM_RADIUS = 500;
+const int FLAG_PLOT_RADIUS = 200;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
+    _mapView.showsUserLocation = YES;
+    
     _teammates = [[NSMutableDictionary alloc] init];
     _flags = [[NSMutableDictionary alloc] init];
 	_enemies = [[NSMutableDictionary alloc] init];
     
-    
-    //put this in the plantFlags method
+    //start timer
     _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(targetMethod:) userInfo:nil repeats:YES];
-
-    _mapView.showsUserLocation = YES;
     
     //add ui so that user can drop pin for flag
     _userPinDrop = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(userPinDrop:)];
@@ -32,46 +35,99 @@
     [self.mapView addGestureRecognizer:_userPinDrop];
     
     //set game "field"
-    CLLocationCoordinate2D coords[4] = {{40.719909, -74.010451}, {40.715265,-73.995323}, {40.802437, -73.934582}, {40.815889,-73.959345}};
-    
+    CLLocationCoordinate2D coords[4] = {{40.813448,-73.960495}, {40.803314,-73.931999}, {40.741693,-73.974056}, {40.752618,-74.005127}};
     MKPolygon *gameFieldPoly = [MKPolygon polygonWithCoordinates:coords count:4];
     [_mapView addOverlay:gameFieldPoly];
-    
-    [self centerOnMe];
-    [self plotFlags];
-	[self plotTeammates];
+            
+    // zoom to game field
+    MKCoordinateRegion zoomRegion = MKCoordinateRegionMakeWithDistance(gameFieldPoly.coordinate, 4700, 4700);
+    [_mapView setRegion:zoomRegion animated:YES];
+
 }
 
 - (void)plotFlags {
     //if i'm not frozen, do this stuff..else, do nothing
-    
-	[self getFlags];
-	for(id key in _flags) {
-		[_mapView addAnnotation:[_flags objectForKey:key]];
-	}
+    if ([[FJGlobalData shared] isFrozen]) {
+        return;
+    } else {
+        [self getFlags];
+        FJFlagAnnotation *flag;
+        CLLocationCoordinate2D myLocation = [[[_mapView userLocation] location] coordinate];
+        
+        NSString * myFlagColor;
+		if([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]){
+            myFlagColor = @"Blue Flag";
+		}else{
+            myFlagColor = @"Orange Flag";
+		}
+
+        for(id key in _flags) {
+            flag = [_flags objectForKey:key];
+
+            //if my flag, always plot
+            if ([flag.title isEqualToString:myFlagColor]) {
+                 [_mapView addAnnotation:flag];
+            } else {
+                //check if user is within range of enemy flag and zoom in and/or plot
+                
+                CLRegion *flagZoomRegion = [[CLRegion alloc] initCircularRegionWithCenter:flag.coordinate radius:FLAG_ZOOM_RADIUS identifier:@"flagZoomRegion"];
+                
+                CLRegion *flagPlotRegion = [[CLRegion alloc] initCircularRegionWithCenter:flag.coordinate radius:FLAG_PLOT_RADIUS identifier:@"flagPlotRegion"];
+                
+                
+                if ([flagZoomRegion containsCoordinate:myLocation]) {
+                    //if i'm within the flag zoom radius, zoom in on the flag
+                    MKCoordinateRegion zoomRegion = MKCoordinateRegionMakeWithDistance(flag.coordinate, 1000, 1000);
+                    [_mapView setRegion:zoomRegion animated:YES];
+                }
+                if ([flagPlotRegion containsCoordinate:myLocation]) {
+                    //if i'm within the flag plot radius, plot flag
+                    [_mapView addAnnotation:flag];
+                }
+            }
+        }
+    }
 }
+
 
 - (void)plotTeammates {
     
     //if i'm not frozen, do this stuff..else, do nothing
-    
-    [self getTeammates];
-	for(id key in _teammates) {
-		[_mapView addAnnotation:[_teammates objectForKey:key]];
-	}
+    if ([[FJGlobalData shared] isFrozen]) {
+        return;
+    } else {
+        [self getTeammates];
+        for(id key in _teammates) {
+            [_mapView addAnnotation:[_teammates objectForKey:key]];
+        }
+    }
 }
 - (void)plotEnemies{
     
     //if i'm not frozen, do this stuff..else, do nothing
     
-    [self getEnemies];
-	for(id key in _enemies) {
-		[_mapView addAnnotation:[_enemies objectForKey:key]];
-	}
+    if ([[FJGlobalData shared] isFrozen]) {
+        return;
+    } else {
+        [self getEnemies];
+        FJEnemyAnnotation *enemy;
+        CLLocationCoordinate2D myLocation = [[[_mapView userLocation] location] coordinate];
+
+        for(id key in _enemies) {
+            enemy = [_enemies objectForKey:key];
+
+            CLRegion *enemyRegion = [[CLRegion alloc] initCircularRegionWithCenter:enemy.coordinate radius:ENEMY_RADIUS identifier:@"enemyRegion"];
+            
+            if ([enemyRegion containsCoordinate:myLocation]) {
+                //if i am in enemy region, plot enemy
+                [_mapView addAnnotation:[_enemies objectForKey:key]];
+            }
+            
+        }
+    }
 }
 
 - (void)getTeammates {
-
 	
     //afnetworking post data
 	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/get-player-list-with-location.php"];
@@ -129,6 +185,7 @@
 }
 
 - (void)getEnemies {
+    
     //afnetworking post data
 	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/get-player-list-with-location.php"];
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:urlForPost];
@@ -244,7 +301,9 @@
 }
 
 - (void) centerOnMe{
+    
 	[_mapView setCenterCoordinate:[[[_mapView userLocation]location] coordinate]];
+    
 }
 
 - (IBAction)refreshMap:(id)sender {
@@ -356,11 +415,9 @@
             
 			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 			teammatePinView.rightCalloutAccessoryView = rightButton;
-						
-            UIImage *teammateImage;
             
             //teammates are always blue to match MKUserAnnotation pin
-            teammateImage = [UIImage imageNamed:@"blueDot.png"];
+            UIImage *teammateImage = [UIImage imageNamed:@"blueDot.png"];
             teammatePinView.image = teammateImage;
             
             return teammatePinView;
@@ -384,10 +441,8 @@
             enemyPinView.canShowCallout = YES;
             enemyPinView.animatesDrop = NO;
             
-            UIImage *enemyImage;
-            
             //enemy color is always orange
-            enemyImage = [UIImage imageNamed:@"orangeDot.png"];
+            UIImage *enemyImage = [UIImage imageNamed:@"orangeDot.png"];
             enemyPinView.image = enemyImage;
             
 			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -464,7 +519,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {
     MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:overlay];
-    polygonView.lineWidth = 1.0;
+    polygonView.lineWidth = 1.5;
     polygonView.strokeColor = [UIColor redColor];
     return polygonView;
 }

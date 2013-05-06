@@ -17,8 +17,9 @@
 
 @interface FJMapViewController : UIViewController
 
-extern int ENEMY_RADIUS;
-extern int FLAG_RADIUS;
+extern const int ENEMY_RADIUS;
+extern const int FLAG_ZOOM_RADIUS;
+extern const int FLAG_PLOT_RADIUS;
 
 @property (nonatomic, retain) NSMutableDictionary *teammates;
 @property (nonatomic, retain) NSMutableDictionary *enemies;
@@ -34,8 +35,6 @@ extern int FLAG_RADIUS;
 - (IBAction)whereAmI:(id)sender;
 
 - (void)centerOnMe;
-
-- (void)plantFlag;
 
 - (void)plotTeammates;
 - (void)plotFlags;
