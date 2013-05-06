@@ -19,6 +19,8 @@
     _teammates = [[NSMutableDictionary alloc] init];
     _flags = [[NSMutableDictionary alloc] init];
 	_enemies = [[NSMutableDictionary alloc] init];
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(targetMethod:) userInfo:nil repeats:YES];
 
     _mapView.showsUserLocation = YES;
     
@@ -240,7 +242,7 @@
 
 - (IBAction)refreshMap:(id)sender {
     
-    //remove any existing annotations
+    //remove any existing annotations 
     for (id<MKAnnotation> annotation in _mapView.annotations) {
         
         if(![annotation.title isEqualToString:@"Blue Flag"] && ![annotation.title isEqualToString:@"Orange Flag"]) {
@@ -303,44 +305,35 @@
     }
     if ([annotation isKindOfClass:[FJFlagAnnotation class]]) // for flags
     {
-        // try to dequeue any existing pin view first
-        static NSString *flagAnnotationIdentifier = @"flagAnnotationIdentifier";
+        // if an existing pin view was not available, create one
+        MKPinAnnotationView *flagPinView = [[MKPinAnnotationView alloc]
+                                                  initWithAnnotation:annotation reuseIdentifier:nil];
+        flagPinView.canShowCallout = YES;
         
-        MKPinAnnotationView *pinView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:flagAnnotationIdentifier];
-        if (pinView == nil) {
-            // if an existing pin view was not available, create one
-            MKPinAnnotationView *flagPinView = [[MKPinAnnotationView alloc]
-                                                  initWithAnnotation:annotation reuseIdentifier:flagAnnotationIdentifier];
-            flagPinView.canShowCallout = YES;
+        NSString *flagColor;
+        UIImage *flagImage;
 			
-            NSString *flagColor;
-			
-            if ([annotation.title isEqualToString:@"Blue Flag"]) {
+        if ([annotation.title isEqualToString:@"Blue Flag"]) {
                 
-                UIImage *flagImage = [UIImage imageNamed:@"blueFlag.png"];
-                flagPinView.image = flagImage;
-                flagColor = @"blue";
+            flagImage = [UIImage imageNamed:@"blueFlag.png"];
+            flagPinView.image = flagImage;
+            flagColor = @"blue";
                 
-            } else if ([annotation.title isEqualToString:@"Orange Flag"]) {
+        } else if ([annotation.title isEqualToString:@"Orange Flag"]) {
                 
-                UIImage *flagImage = [UIImage imageNamed:@"orangeFlag.png"];
-                flagPinView.image = flagImage;
-                flagColor = @"orange";
-            }
-			
+            flagImage = [UIImage imageNamed:@"orangeFlag.png"];
+            flagPinView.image = flagImage;
+            flagColor = @"orange";
+        } 			
             
-            if(![flagColor isEqualToString: [NSString stringWithFormat: @"%@", [[FJGlobalData shared] myTeamColor]]]){
-				UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-				flagPinView.rightCalloutAccessoryView = rightButton;
-			}//this is the button that will capture the flag, evenutally should become a change in view to bigger capture button
+        if(![flagColor isEqualToString: [NSString stringWithFormat: @"%@", [[FJGlobalData shared] myTeamColor]]]){
+            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            flagPinView.rightCalloutAccessoryView = rightButton;
+        }//this is the button that will capture the flag, evenutally should become a change in view to bigger capture button
             
-            return flagPinView;
-        }
-        else {
-            pinView.annotation = annotation;
-        }
-        return pinView;
-    }else if ([annotation isKindOfClass:[FJTeammateAnnotation class]]) {
+        return flagPinView;
+                
+    } else if ([annotation isKindOfClass:[FJTeammateAnnotation class]]) {
         // for teammates
 		
 		static NSString *teammateAnnotationIdentifier = @"teammateAnnotationIdentifier";
@@ -357,21 +350,11 @@
 			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 			teammatePinView.rightCalloutAccessoryView = rightButton;
 						
-            NSString *teamColor = [[FJGlobalData shared] myTeamColor];
             UIImage *teammateImage;
             
-            if ([teamColor isEqualToString:@"blue"]) {
-                
-                //team color is blue, use blueDot
-                teammateImage = [UIImage imageNamed:@"blueDot.png"];
-                teammatePinView.image = teammateImage;
-                
-            } else {
-                
-                //team color is orange, use orangeDot
-                teammateImage = [UIImage imageNamed:@"orangeDot.png"];
-                teammatePinView.image = teammateImage;
-            }
+            //teammates are always blue to match MKUserAnnotation pin
+            teammateImage = [UIImage imageNamed:@"blueDot.png"];
+            teammatePinView.image = teammateImage;
             
             return teammatePinView;
             
@@ -394,22 +377,11 @@
             enemyPinView.canShowCallout = YES;
             enemyPinView.animatesDrop = NO;
             
-            NSString *enemyColor = [[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"] ? @"orange" : @"blue";
             UIImage *enemyImage;
             
-            if ([enemyColor isEqualToString:@"blue"]) {
-                
-                //team color is blue, use blueDot
-                enemyImage = [UIImage imageNamed:@"blueDot.png"];
-                enemyPinView.image = enemyImage;
-                
-            } else {
-                
-                //team color is orange, use orangeDot
-                enemyImage = [UIImage imageNamed:@"orangeDot.png"];
-                enemyPinView.image = enemyImage;
-            }
-
+            //enemy color is always orange
+            enemyImage = [UIImage imageNamed:@"orangeDot.png"];
+            enemyPinView.image = enemyImage;
             
 			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 			enemyPinView.rightCalloutAccessoryView = rightButton;
@@ -488,6 +460,21 @@ calloutAccessoryControlTapped:(UIControl *)control {
     polygonView.lineWidth = 1.0;
     polygonView.strokeColor = [UIColor redColor];
     return polygonView;
+}
+
+- (void)targetMethod:(NSTimer*)theTimer {
+    //remove any existing annotations (except for me)
+    for (id<MKAnnotation> annotation in _mapView.annotations) {
+        
+        if(!([annotation isKindOfClass:[MKUserLocation class]])) {
+			[_mapView removeAnnotation:annotation];
+		}
+        
+    }
+    [self plotTeammates];
+    [self plotFlags];
+    [self plotEnemies];
+    
 }
 
 @end
