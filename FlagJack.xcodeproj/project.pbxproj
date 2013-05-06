@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C150272170CDA8200F01AC6 /* FJGlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150271170CDA8200F01AC6 /* FJGlobalData.m */; };
+		3C116E681737274500014A37 /* FJMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F589F1737235100E0271E /* FJMapViewController.m */; };
+		3C116E691737276F00014A37 /* FJTeammateAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F58A2173723C200E0271E /* FJTeammateAnnotation.m */; };
+		3C116E6C173727EA00014A37 /* FJGlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C116E6B173727E700014A37 /* FJGlobalData.m */; };
 		3C150278170CE0C900F01AC6 /* FJNameYourselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */; };
 		3C150281170CF14200F01AC6 /* FJWaitingRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */; };
 		3C150287170CF3E400F01AC6 /* FJWaitingRoomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */; };
@@ -22,7 +24,6 @@
 		3C19B995170B804700BE626C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B994170B804700BE626C /* Default-568h@2x.png */; };
 		3C19B998170B804700BE626C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C19B996170B804700BE626C /* MainStoryboard.storyboard */; };
 		3C19B99B170B804700BE626C /* FJLobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B99A170B804700BE626C /* FJLobbyViewController.m */; };
-		3C19B9A2170B804700BE626C /* FJMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9A1170B804700BE626C /* FJMapViewController.m */; };
 		3C19B9C0170B805100BE626C /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9AE170B805100BE626C /* AFHTTPClient.m */; };
 		3C19B9C1170B805100BE626C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9B0170B805100BE626C /* AFHTTPRequestOperation.m */; };
 		3C19B9C2170B805100BE626C /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9B2170B805100BE626C /* AFImageRequestOperation.m */; };
@@ -34,21 +35,21 @@
 		3C19B9C8170B805100BE626C /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C19B9BF170B805100BE626C /* UIImageView+AFNetworking.m */; };
 		3C2DDE381714D59E002E9E18 /* FJNoGameYetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */; };
 		3C2DDE3B1714D9C9002E9E18 /* FJFlagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */; };
+		3C2F589E1737231200E0271E /* FJEnemyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F589C1737231200E0271E /* FJEnemyAnnotation.m */; };
 		3C5F4E2E1736EE2B00E8FF76 /* FJDisclosureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */; };
-		3C6320891734871B0024C21B /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C6320871734871B0024C21B /* setup.png */; };
-		3C63208A1734871B0024C21B /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C6320881734871B0024C21B /* map.png */; };
 		3C63208C17348C250024C21B /* logo-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C63208B17348C250024C21B /* logo-retina.png */; };
 		3C63208E17348C320024C21B /* logo-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C63208D17348C320024C21B /* logo-normal.png */; };
 		3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C6818F0170DD76200CB0FD0 /* texture.jpg */; };
+		3CF8866617371D7A007A10CE /* setup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF8866417371D7A007A10CE /* setup.png */; };
+		3CF8866717371D7A007A10CE /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CF8866517371D7A007A10CE /* map.png */; };
 		54265B4817151817006E7669 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54265B4717151817006E7669 /* CoreLocation.framework */; };
 		54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */; };
 		54419BEB1713628E00039958 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54419BEA1713628E00039958 /* MapKit.framework */; };
-		54C39BAF1724A01400E0B527 /* FJTeammateAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 54C39BAE1724A01400E0B527 /* FJTeammateAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3C150270170CDA8200F01AC6 /* FJGlobalData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJGlobalData.h; sourceTree = "<group>"; };
-		3C150271170CDA8200F01AC6 /* FJGlobalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJGlobalData.m; sourceTree = "<group>"; };
+		3C116E6A173727E700014A37 /* FJGlobalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJGlobalData.h; sourceTree = "<group>"; };
+		3C116E6B173727E700014A37 /* FJGlobalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJGlobalData.m; sourceTree = "<group>"; };
 		3C150276170CE0C900F01AC6 /* FJNameYourselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJNameYourselfViewController.h; sourceTree = "<group>"; };
 		3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJNameYourselfViewController.m; sourceTree = "<group>"; };
 		3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomViewController.m; sourceTree = "<group>"; };
@@ -71,8 +72,6 @@
 		3C19B997170B804700BE626C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3C19B999170B804700BE626C /* FJLobbyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJLobbyViewController.h; sourceTree = "<group>"; };
 		3C19B99A170B804700BE626C /* FJLobbyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJLobbyViewController.m; sourceTree = "<group>"; };
-		3C19B9A0170B804700BE626C /* FJMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJMapViewController.h; sourceTree = "<group>"; };
-		3C19B9A1170B804700BE626C /* FJMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJMapViewController.m; sourceTree = "<group>"; };
 		3C19B9AD170B805100BE626C /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		3C19B9AE170B805100BE626C /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		3C19B9AF170B805100BE626C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -96,19 +95,23 @@
 		3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJNoGameYetViewController.m; sourceTree = "<group>"; };
 		3C2DDE391714D9C9002E9E18 /* FJFlagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFlagAnnotation.h; sourceTree = "<group>"; };
 		3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFlagAnnotation.m; sourceTree = "<group>"; };
+		3C2F589C1737231200E0271E /* FJEnemyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJEnemyAnnotation.m; sourceTree = "<group>"; };
+		3C2F589D1737231200E0271E /* FJEnemyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJEnemyAnnotation.h; sourceTree = "<group>"; };
+		3C2F589F1737235100E0271E /* FJMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJMapViewController.m; sourceTree = "<group>"; };
+		3C2F58A01737235100E0271E /* FJMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJMapViewController.h; sourceTree = "<group>"; };
+		3C2F58A1173723C200E0271E /* FJTeammateAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJTeammateAnnotation.h; sourceTree = "<group>"; };
+		3C2F58A2173723C200E0271E /* FJTeammateAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJTeammateAnnotation.m; sourceTree = "<group>"; };
 		3C5F4E2C1736EE2B00E8FF76 /* FJDisclosureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FJDisclosureViewController.h; path = ../FJDisclosureViewController.h; sourceTree = "<group>"; };
 		3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FJDisclosureViewController.m; path = ../FJDisclosureViewController.m; sourceTree = "<group>"; };
-		3C6320871734871B0024C21B /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setup.png; path = ../../../../../Pictures/setup.png; sourceTree = "<group>"; };
-		3C6320881734871B0024C21B /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = ../../../../../Pictures/map.png; sourceTree = "<group>"; };
 		3C63208B17348C250024C21B /* logo-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-retina.png"; sourceTree = "<group>"; };
 		3C63208D17348C320024C21B /* logo-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-normal.png"; sourceTree = "<group>"; };
 		3C6818F0170DD76200CB0FD0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+		3CF8866417371D7A007A10CE /* setup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setup.png; sourceTree = "<group>"; };
+		3CF8866517371D7A007A10CE /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		54265B4717151817006E7669 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWaitingRoomTableViewCell.h; sourceTree = "<group>"; };
 		54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomTableViewCell.m; sourceTree = "<group>"; };
 		54419BEA1713628E00039958 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		54C39BAD1724A01400E0B527 /* FJTeammateAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJTeammateAnnotation.h; sourceTree = "<group>"; };
-		54C39BAE1724A01400E0B527 /* FJTeammateAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJTeammateAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +135,8 @@
 			children = (
 				3C63208D17348C320024C21B /* logo-normal.png */,
 				3C63208B17348C250024C21B /* logo-retina.png */,
-				3C6320871734871B0024C21B /* setup.png */,
-				3C6320881734871B0024C21B /* map.png */,
+				3CF8866417371D7A007A10CE /* setup.png */,
+				3CF8866517371D7A007A10CE /* map.png */,
 				54265B4717151817006E7669 /* CoreLocation.framework */,
 				3C6818F0170DD76200CB0FD0 /* texture.jpg */,
 				3C19B9AC170B805100BE626C /* AFNetworking */,
@@ -165,24 +168,26 @@
 		3C19B984170B804600BE626C /* FlagJack */ = {
 			isa = PBXGroup;
 			children = (
-				3C5F4E2C1736EE2B00E8FF76 /* FJDisclosureViewController.h */,
-				3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */,
 				3C19B98D170B804700BE626C /* FJAppDelegate.h */,
 				3C19B98E170B804700BE626C /* FJAppDelegate.m */,
+				3C5F4E2C1736EE2B00E8FF76 /* FJDisclosureViewController.h */,
+				3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */,
+				3C2F589D1737231200E0271E /* FJEnemyAnnotation.h */,
+				3C2F589C1737231200E0271E /* FJEnemyAnnotation.m */,
 				3C2DDE391714D9C9002E9E18 /* FJFlagAnnotation.h */,
 				3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */,
-				3C150270170CDA8200F01AC6 /* FJGlobalData.h */,
-				3C150271170CDA8200F01AC6 /* FJGlobalData.m */,
+				3C116E6A173727E700014A37 /* FJGlobalData.h */,
+				3C116E6B173727E700014A37 /* FJGlobalData.m */,
 				3C19B999170B804700BE626C /* FJLobbyViewController.h */,
 				3C19B99A170B804700BE626C /* FJLobbyViewController.m */,
-				3C19B9A0170B804700BE626C /* FJMapViewController.h */,
-				3C19B9A1170B804700BE626C /* FJMapViewController.m */,
+				3C2F58A01737235100E0271E /* FJMapViewController.h */,
+				3C2F589F1737235100E0271E /* FJMapViewController.m */,
 				3C150276170CE0C900F01AC6 /* FJNameYourselfViewController.h */,
 				3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */,
 				3C2DDE361714D59E002E9E18 /* FJNoGameYetViewController.h */,
 				3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */,
-				54C39BAD1724A01400E0B527 /* FJTeammateAnnotation.h */,
-				54C39BAE1724A01400E0B527 /* FJTeammateAnnotation.m */,
+				3C2F58A1173723C200E0271E /* FJTeammateAnnotation.h */,
+				3C2F58A2173723C200E0271E /* FJTeammateAnnotation.m */,
 				3C150285170CF3E400F01AC6 /* FJWaitingRoomTableView.h */,
 				3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */,
 				54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */,
@@ -293,10 +298,10 @@
 				3C19B995170B804700BE626C /* Default-568h@2x.png in Resources */,
 				3C19B998170B804700BE626C /* MainStoryboard.storyboard in Resources */,
 				3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */,
-				3C6320891734871B0024C21B /* setup.png in Resources */,
-				3C63208A1734871B0024C21B /* map.png in Resources */,
 				3C63208C17348C250024C21B /* logo-retina.png in Resources */,
 				3C63208E17348C320024C21B /* logo-normal.png in Resources */,
+				3CF8866617371D7A007A10CE /* setup.png in Resources */,
+				3CF8866717371D7A007A10CE /* map.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +315,6 @@
 				3C19B98B170B804700BE626C /* main.m in Sources */,
 				3C19B98F170B804700BE626C /* FJAppDelegate.m in Sources */,
 				3C19B99B170B804700BE626C /* FJLobbyViewController.m in Sources */,
-				3C19B9A2170B804700BE626C /* FJMapViewController.m in Sources */,
 				3C19B9C0170B805100BE626C /* AFHTTPClient.m in Sources */,
 				3C19B9C1170B805100BE626C /* AFHTTPRequestOperation.m in Sources */,
 				3C19B9C2170B805100BE626C /* AFImageRequestOperation.m in Sources */,
@@ -320,15 +324,17 @@
 				3C19B9C6170B805100BE626C /* AFURLConnectionOperation.m in Sources */,
 				3C19B9C7170B805100BE626C /* AFXMLRequestOperation.m in Sources */,
 				3C19B9C8170B805100BE626C /* UIImageView+AFNetworking.m in Sources */,
-				3C150272170CDA8200F01AC6 /* FJGlobalData.m in Sources */,
 				3C150278170CE0C900F01AC6 /* FJNameYourselfViewController.m in Sources */,
 				3C150281170CF14200F01AC6 /* FJWaitingRoomViewController.m in Sources */,
 				3C150287170CF3E400F01AC6 /* FJWaitingRoomTableView.m in Sources */,
 				54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */,
 				3C2DDE381714D59E002E9E18 /* FJNoGameYetViewController.m in Sources */,
 				3C2DDE3B1714D9C9002E9E18 /* FJFlagAnnotation.m in Sources */,
-				54C39BAF1724A01400E0B527 /* FJTeammateAnnotation.m in Sources */,
 				3C5F4E2E1736EE2B00E8FF76 /* FJDisclosureViewController.m in Sources */,
+				3C2F589E1737231200E0271E /* FJEnemyAnnotation.m in Sources */,
+				3C116E681737274500014A37 /* FJMapViewController.m in Sources */,
+				3C116E691737276F00014A37 /* FJTeammateAnnotation.m in Sources */,
+				3C116E6C173727EA00014A37 /* FJGlobalData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
