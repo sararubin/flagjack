@@ -10,6 +10,7 @@
 		3C116E681737274500014A37 /* FJMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F589F1737235100E0271E /* FJMapViewController.m */; };
 		3C116E691737276F00014A37 /* FJTeammateAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F58A2173723C200E0271E /* FJTeammateAnnotation.m */; };
 		3C116E6C173727EA00014A37 /* FJGlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C116E6B173727E700014A37 /* FJGlobalData.m */; };
+		3C116E6F1737668E00014A37 /* FJDisclosureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C116E6D1737668E00014A37 /* FJDisclosureViewController.m */; };
 		3C150278170CE0C900F01AC6 /* FJNameYourselfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */; };
 		3C150281170CF14200F01AC6 /* FJWaitingRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */; };
 		3C150287170CF3E400F01AC6 /* FJWaitingRoomTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C150286170CF3E400F01AC6 /* FJWaitingRoomTableView.m */; };
@@ -36,7 +37,6 @@
 		3C2DDE381714D59E002E9E18 /* FJNoGameYetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DDE371714D59E002E9E18 /* FJNoGameYetViewController.m */; };
 		3C2DDE3B1714D9C9002E9E18 /* FJFlagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2DDE3A1714D9C9002E9E18 /* FJFlagAnnotation.m */; };
 		3C2F589E1737231200E0271E /* FJEnemyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C2F589C1737231200E0271E /* FJEnemyAnnotation.m */; };
-		3C5F4E2E1736EE2B00E8FF76 /* FJDisclosureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */; };
 		3C63208C17348C250024C21B /* logo-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C63208B17348C250024C21B /* logo-retina.png */; };
 		3C63208E17348C320024C21B /* logo-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C63208D17348C320024C21B /* logo-normal.png */; };
 		3C6818F1170DD76200CB0FD0 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3C6818F0170DD76200CB0FD0 /* texture.jpg */; };
@@ -50,6 +50,8 @@
 /* Begin PBXFileReference section */
 		3C116E6A173727E700014A37 /* FJGlobalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJGlobalData.h; sourceTree = "<group>"; };
 		3C116E6B173727E700014A37 /* FJGlobalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJGlobalData.m; sourceTree = "<group>"; };
+		3C116E6D1737668E00014A37 /* FJDisclosureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJDisclosureViewController.m; sourceTree = "<group>"; };
+		3C116E6E1737668E00014A37 /* FJDisclosureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJDisclosureViewController.h; sourceTree = "<group>"; };
 		3C150276170CE0C900F01AC6 /* FJNameYourselfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJNameYourselfViewController.h; sourceTree = "<group>"; };
 		3C150277170CE0C900F01AC6 /* FJNameYourselfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJNameYourselfViewController.m; sourceTree = "<group>"; };
 		3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomViewController.m; sourceTree = "<group>"; };
@@ -101,8 +103,6 @@
 		3C2F58A01737235100E0271E /* FJMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJMapViewController.h; sourceTree = "<group>"; };
 		3C2F58A1173723C200E0271E /* FJTeammateAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FJTeammateAnnotation.h; sourceTree = "<group>"; };
 		3C2F58A2173723C200E0271E /* FJTeammateAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FJTeammateAnnotation.m; sourceTree = "<group>"; };
-		3C5F4E2C1736EE2B00E8FF76 /* FJDisclosureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FJDisclosureViewController.h; path = ../FJDisclosureViewController.h; sourceTree = "<group>"; };
-		3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FJDisclosureViewController.m; path = ../FJDisclosureViewController.m; sourceTree = "<group>"; };
 		3C63208B17348C250024C21B /* logo-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-retina.png"; sourceTree = "<group>"; };
 		3C63208D17348C320024C21B /* logo-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-normal.png"; sourceTree = "<group>"; };
 		3C6818F0170DD76200CB0FD0 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
@@ -170,8 +170,8 @@
 			children = (
 				3C19B98D170B804700BE626C /* FJAppDelegate.h */,
 				3C19B98E170B804700BE626C /* FJAppDelegate.m */,
-				3C5F4E2C1736EE2B00E8FF76 /* FJDisclosureViewController.h */,
-				3C5F4E2D1736EE2B00E8FF76 /* FJDisclosureViewController.m */,
+				3C116E6D1737668E00014A37 /* FJDisclosureViewController.m */,
+				3C116E6E1737668E00014A37 /* FJDisclosureViewController.h */,
 				3C2F589D1737231200E0271E /* FJEnemyAnnotation.h */,
 				3C2F589C1737231200E0271E /* FJEnemyAnnotation.m */,
 				3C2DDE391714D9C9002E9E18 /* FJFlagAnnotation.h */,
@@ -330,11 +330,11 @@
 				54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */,
 				3C2DDE381714D59E002E9E18 /* FJNoGameYetViewController.m in Sources */,
 				3C2DDE3B1714D9C9002E9E18 /* FJFlagAnnotation.m in Sources */,
-				3C5F4E2E1736EE2B00E8FF76 /* FJDisclosureViewController.m in Sources */,
 				3C2F589E1737231200E0271E /* FJEnemyAnnotation.m in Sources */,
 				3C116E681737274500014A37 /* FJMapViewController.m in Sources */,
 				3C116E691737276F00014A37 /* FJTeammateAnnotation.m in Sources */,
 				3C116E6C173727EA00014A37 /* FJGlobalData.m in Sources */,
+				3C116E6F1737668E00014A37 /* FJDisclosureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
