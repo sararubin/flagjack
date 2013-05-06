@@ -546,7 +546,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 }
 
 - (void)userPinDrop:(UIGestureRecognizer *)gestureRecognizer {
-    
+    return;
     //if i am not a captain, I cannot place flag
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan && ![[FJGlobalData shared] isCaptain]) {
         return;
