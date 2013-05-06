@@ -54,6 +54,7 @@ const int FLAG_PLOT_RADIUS = 200;
         FJFlagAnnotation *flag;
         CLLocationCoordinate2D myLocation = [[[_mapView userLocation] location] coordinate];
         
+		
         NSString * myFlagColor;
 		if([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]){
             myFlagColor = @"Blue Flag";
@@ -63,7 +64,11 @@ const int FLAG_PLOT_RADIUS = 200;
 
         for(id key in _flags) {
             flag = [_flags objectForKey:key];
-
+			NSLog(@"plot flag %@", flag);
+			//for demonstration purposes, show all flags
+			[_mapView addAnnotation:flag];
+			
+			/*commented out for demonstration purposes
             //if my flag, always plot
             if ([flag.title isEqualToString:myFlagColor]) {
                  [_mapView addAnnotation:flag];
@@ -84,7 +89,8 @@ const int FLAG_PLOT_RADIUS = 200;
                     //if i'm within the flag plot radius, plot flag
                     [_mapView addAnnotation:flag];
                 }
-            }
+			 
+            }*/
         }
     }
 }
@@ -118,10 +124,11 @@ const int FLAG_PLOT_RADIUS = 200;
 
             CLRegion *enemyRegion = [[CLRegion alloc] initCircularRegionWithCenter:enemy.coordinate radius:ENEMY_RADIUS identifier:@"enemyRegion"];
             
-            if ([enemyRegion containsCoordinate:myLocation]) {
+			//commented out for demonstration purposes
+//            if ([enemyRegion containsCoordinate:myLocation]) {
                 //if i am in enemy region, plot enemy
                 [_mapView addAnnotation:[_enemies objectForKey:key]];
-            }
+            //}
             
         }
     }
