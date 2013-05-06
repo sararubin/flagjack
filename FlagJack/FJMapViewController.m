@@ -488,6 +488,6 @@ calloutAccessoryControlTapped:(UIControl *)control {
     polygonView.lineWidth = 1.0;
     polygonView.strokeColor = [UIColor redColor];
     return polygonView;
-}s
+}
 
 @end
