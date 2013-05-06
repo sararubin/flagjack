@@ -35,7 +35,7 @@ const int FLAG_PLOT_RADIUS = 200;
     [self.mapView addGestureRecognizer:_userPinDrop];
     
     //set game "field"
-    CLLocationCoordinate2D coords[4] = {{40.813448,-73.960495}, {40.803314,-73.931999}, {40.741693,-73.974056}, {40.752618,-74.005127}};
+    CLLocationCoordinate2D coords[4] = {{40.813448,-73.960495}, {40.803314,-73.931999}, {40.7149, -73.9896}, {40.7382, -74.0079}};
     MKPolygon *gameFieldPoly = [MKPolygon polygonWithCoordinates:coords count:4];
     [_mapView addOverlay:gameFieldPoly];
             
@@ -64,7 +64,6 @@ const int FLAG_PLOT_RADIUS = 200;
 
         for(id key in _flags) {
             flag = [_flags objectForKey:key];
-			NSLog(@"plot flag %@", flag);
 			//for demonstration purposes, show all flags
 			[_mapView addAnnotation:flag];
 			
