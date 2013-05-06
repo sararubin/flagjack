@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FJGlobalData.h"
 
-@interface FJDisclosureViewController : UIViewController
+@interface FJDisclosureViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 - (IBAction)takeMeBack:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *freezeButton;
+@property (strong, nonatomic) IBOutlet UILabel *playerName;
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
+@property NSMutableArray* enemies;
+@property NSMutableArray* enemyIds;
+- (IBAction)freezeSomeone:(id)sender;
 
 @end

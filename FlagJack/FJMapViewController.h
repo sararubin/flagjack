@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AFHTTPClient.h"
 #import "FJFlagAnnotation.h"
+#import "FJEnemyAnnotation.h"
 #import "FJTeammateAnnotation.h"
 
 @interface FJMapViewController : UIViewController

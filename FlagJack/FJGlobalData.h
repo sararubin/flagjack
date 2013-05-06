@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "AFHTTPClient.h"
 
 @interface FJGlobalData : NSObject
 
@@ -22,12 +23,16 @@
 @property NSString *team;
 @property BOOL isAdmin;
 @property BOOL isCaptain;
+@property BOOL isFrozen;
 @property BOOL gameHasStarted;
+@property BOOL discloseEnemy;
 @property NSMutableArray* players;
 @property NSMutableArray* playerIds;
 @property NSMutableArray* playerTeamColors;
 @property int orangeCaptainId;
 @property int blueCaptainId;
+@property int idToDisclose;
+
 
 //should this also be a property?
 extern NSString *authCode;
@@ -37,5 +42,7 @@ extern NSString *authCode;
 @property CLLocationCoordinate2D enemyFlagLocation;
 
 + (FJGlobalData*)shared;
+
+-(void) unfreeze;
 
 @end

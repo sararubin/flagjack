@@ -100,8 +100,9 @@
 				if(![playerTeamColor isEqualToString:[[FJGlobalData shared] myTeamColor]] || (playerId == [[FJGlobalData shared] myId])){//if you're not a teammate, I don't get to see you on my map, and I'm not my teammate
 					continue;
 				}
-                                
-				FJTeammateAnnotation* player = [[FJTeammateAnnotation alloc] initWithCoordinate:playerCoord andName:playerName andLocation: playerTeamColor];
+                
+				FJTeammateAnnotation* player = [[FJTeammateAnnotation alloc] initWithCoordinate:playerCoord andName:playerName andLocation:playerTeamColor andIdentifier:playerId];
+				
                 [_teammates setObject:player forKey:playerName];
 				
             }
@@ -156,7 +157,7 @@
 					continue;
 				}
                 
-				FJTeammateAnnotation* player = [[FJTeammateAnnotation alloc] initWithCoordinate:playerCoord andName:playerName andLocation: playerTeamColor];
+				FJEnemyAnnotation* player = [[FJEnemyAnnotation alloc] initWithCoordinate:playerCoord andName:playerName andLocation: playerTeamColor andIdentifier:playerId];
 				[_enemies setObject: player forKey: player.name];
             }
 		}
@@ -305,9 +306,9 @@
                                                   initWithAnnotation:annotation reuseIdentifier:flagAnnotationIdentifier];
             flagPinView.canShowCallout = YES;
             if ([annotation.title isEqualToString:@"Blue Flag"]) {
-                flagPinView.pinColor = MKPinAnnotationColorPurple;
+                flagPinView.pinColor = MKPinAnnotationColorGreen;
             } else if ([annotation.title isEqualToString:@"Orange Flag"]){
-                flagPinView.pinColor = MKPinAnnotationColorRed;
+                flagPinView.pinColor = MKPinAnnotationColorGreen;
             } else {
 				flagPinView.pinColor = MKPinAnnotationColorGreen;
 			}
@@ -318,9 +319,7 @@
             pinView.annotation = annotation;
         }
         return pinView;
-    }
-    else if ([annotation isKindOfClass:[FJTeammateAnnotation class]]) { // for teammates
-		
+    }else if ([annotation isKindOfClass:[FJTeammateAnnotation class]]) { // for teammates
 		
 		static NSString *teammateAnnotationIdentifier = @"teammateAnnotationIdentifier";
         
@@ -332,7 +331,7 @@
                                                 initWithAnnotation:annotation reuseIdentifier:teammateAnnotationIdentifier];
             teammatePinView.canShowCallout = YES;
             teammatePinView.animatesDrop = NO;
-            teammatePinView.pinColor = MKPinAnnotationColorRed;
+            teammatePinView.pinColor = MKPinAnnotationColorPurple;
             
 			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 			teammatePinView.rightCalloutAccessoryView = rightButton;
@@ -343,16 +342,48 @@
             pinView.annotation = annotation;
         }
         return pinView;
+    }else if ([annotation isKindOfClass:[FJEnemyAnnotation class]]) { // for enemies
+		
+		static NSString *enemyAnnotationIdentifier = @"enemyAnnotationIdentifier";
+        
+        MKPinAnnotationView *pinView =
+        (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:enemyAnnotationIdentifier];
+        if (pinView == nil) {
+            // if an existing pin view was not available, create one
+            MKPinAnnotationView *enemyPinView = [[MKPinAnnotationView alloc]
+													initWithAnnotation:annotation reuseIdentifier:enemyAnnotationIdentifier];
+            enemyPinView.canShowCallout = YES;
+            enemyPinView.animatesDrop = NO;
+            enemyPinView.pinColor = MKPinAnnotationColorRed;
+            
+			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+			enemyPinView.rightCalloutAccessoryView = rightButton;
+			
+            return enemyPinView;
+            
+        } else {
+            pinView.annotation = annotation;
+        }
+        return pinView;
     }
+
     
     return nil;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control {
-
-	int index = [[[FJGlobalData shared] players]indexOfObject:view.annotation.title];
-	int theId = [[[[FJGlobalData shared] playerIds]objectAtIndex:index] intValue];
+	int idToDisclose = -1;
+	if([view.annotation.title isEqualToString:@"Enemy"]){
+		FJEnemyAnnotation *enemyAnn = view.annotation;
+		idToDisclose = enemyAnn.ident;
+		[[FJGlobalData shared] setDiscloseEnemy:YES];
+	}else{
+		FJTeammateAnnotation *teammateAnn = view.annotation;
+		idToDisclose = teammateAnn.ident;
+		[[FJGlobalData shared] setDiscloseEnemy:NO];
+	}
+	[[FJGlobalData shared] setIdToDisclose:idToDisclose];
 	
 	UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Disclosure"];
     controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
