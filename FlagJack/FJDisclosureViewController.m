@@ -103,7 +103,8 @@ numberOfRowsInComponent:(NSInteger)component
 			if([responseStr isEqualToString:@"failure"]){
 				NSLog(@"failed to save name");
 			}else{
-				//alert them that this person has been frozen
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Got 'Em!" message:@"Their map won't work for 3 minutes!" delegate:self cancelButtonTitle:@"awesome" otherButtonTitles:nil];
+				[alert show];
 				
 			}
 			
@@ -128,9 +129,9 @@ numberOfRowsInComponent:(NSInteger)component
 			if([responseStr isEqualToString:@"failure"]){
 				NSLog(@"failed to save name");
 			}else{
-				//alert them that they have frozen themselves
-				//- (void)performSelector:(SEL)aSelector withObject:(id)anArgument afterDelay:(NSTimeInterval)delay
-				[[FJGlobalData shared]performSelector:@selector(unfreeze) withObject:NULL afterDelay:10];
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong!" message:@"You have frozen yourself for 5 minutes" delegate:self cancelButtonTitle:@"shoot, okay" otherButtonTitles:nil];
+				[alert show];
+				[[FJGlobalData shared]performSelector:@selector(unfreeze) withObject:NULL afterDelay:300];
 			}
 			
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -8,6 +8,7 @@
 
 #import "FJMapViewController.h"
 
+
 @implementation FJMapViewController
 
 - (void)viewDidLoad
@@ -305,13 +306,19 @@
             MKPinAnnotationView *flagPinView = [[MKPinAnnotationView alloc]
                                                   initWithAnnotation:annotation reuseIdentifier:flagAnnotationIdentifier];
             flagPinView.canShowCallout = YES;
+			NSString *flagColor;
             if ([annotation.title isEqualToString:@"Blue Flag"]) {
                 flagPinView.pinColor = MKPinAnnotationColorGreen;
+				flagColor = @"blue";
             } else if ([annotation.title isEqualToString:@"Orange Flag"]){
                 flagPinView.pinColor = MKPinAnnotationColorGreen;
-            } else {
-				flagPinView.pinColor = MKPinAnnotationColorGreen;
-			}
+				flagColor = @"orange";
+            }
+			[[FJGlobalData shared] myTeamColor];
+			if(![flagColor isEqualToString: [NSString stringWithFormat: @"%@", [[FJGlobalData shared] myTeamColor]]]){
+				UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+				flagPinView.rightCalloutAccessoryView = rightButton;
+			}//this is the button that will capture the flag, evenutally should become a change in view to bigger capture button
             
             return flagPinView;
         }
@@ -373,22 +380,58 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control {
-	int idToDisclose = -1;
-	if([view.annotation.title isEqualToString:@"Enemy"]){
-		FJEnemyAnnotation *enemyAnn = view.annotation;
-		idToDisclose = enemyAnn.ident;
-		[[FJGlobalData shared] setDiscloseEnemy:YES];
-	}else{
-		FJTeammateAnnotation *teammateAnn = view.annotation;
-		idToDisclose = teammateAnn.ident;
-		[[FJGlobalData shared] setDiscloseEnemy:NO];
-	}
-	[[FJGlobalData shared] setIdToDisclose:idToDisclose];
 	
-	UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Disclosure"];
-    controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
-    [self addChildViewController:controller];
-    [self.view addSubview:controller.view];
+	if([view.annotation isKindOfClass:[FJFlagAnnotation class]]) { // for flags
+		NSLog(@"you captured the flag");
+		//afnetworking post data
+		NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/change-flag-status.php"];
+		AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:urlForPost];
+		
+		NSString *authCode = @"&&^#guer16n";
+		NSString *gameId = [NSString stringWithFormat:@"%d", [[FJGlobalData shared]gameId]];
+		NSString *myId = [NSString stringWithFormat:@"%d", [[FJGlobalData shared]myId]];
+		NSString *flagStatus = [NSString stringWithFormat:@"%d", 2];
+		NSString * flagColor;
+		if([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]){
+			 flagColor = @"Orange Flag";
+		}else{
+			 flagColor = @"Blue Flag";
+		}
+		
+		NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: authCode, @"authorize", gameId, @"gameId", flagColor, @"flagColor", flagStatus, @"flagStatus", myId, @"myId", nil];
+		
+		[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+			if([responseStr isEqualToString:@"failure"]){
+				NSLog(@"failed to save name");
+			}else{
+				//alert them that they have frozen themselves
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Flag Stolen!" message:@"You are visible now visible to all players!" delegate:self cancelButtonTitle:@"RUN!" otherButtonTitles:nil];
+				[alert show];
+				
+			}
+			
+		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+		}];
+	}else{
+		int idToDisclose = -1;
+		if([view.annotation.title isEqualToString:@"Enemy"]){
+			FJEnemyAnnotation *enemyAnn = view.annotation;
+			idToDisclose = enemyAnn.ident;
+			[[FJGlobalData shared] setDiscloseEnemy:YES];
+		}else{
+			FJTeammateAnnotation *teammateAnn = view.annotation;
+			idToDisclose = teammateAnn.ident;
+			[[FJGlobalData shared] setDiscloseEnemy:NO];
+		}
+		[[FJGlobalData shared] setIdToDisclose:idToDisclose];
+		
+		UIViewController* controller = [self.storyboard instantiateViewControllerWithIdentifier:@"Disclosure"];
+		controller.view.frame = CGRectMake(0, 0, controller.view.frame.size.width, controller.view.frame.size.height);
+		[self addChildViewController:controller];
+		[self.view addSubview:controller.view];
+	}
 }
 
 @end
