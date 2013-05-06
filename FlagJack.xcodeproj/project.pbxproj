@@ -133,12 +133,8 @@
 		3C19B972170B804600BE626C = {
 			isa = PBXGroup;
 			children = (
-				3C63208D17348C320024C21B /* logo-normal.png */,
-				3C63208B17348C250024C21B /* logo-retina.png */,
-				3CF8866417371D7A007A10CE /* setup.png */,
-				3CF8866517371D7A007A10CE /* map.png */,
+				54A4D572173768D9000975F2 /* Images */,
 				54265B4717151817006E7669 /* CoreLocation.framework */,
-				3C6818F0170DD76200CB0FD0 /* texture.jpg */,
 				3C19B9AC170B805100BE626C /* AFNetworking */,
 				3C19B984170B804600BE626C /* FlagJack */,
 				3C19B97D170B804600BE626C /* Frameworks */,
@@ -238,6 +234,18 @@
 				3C19B9BF170B805100BE626C /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		54A4D572173768D9000975F2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3C6818F0170DD76200CB0FD0 /* texture.jpg */,
+				3C63208D17348C320024C21B /* logo-normal.png */,
+				3C63208B17348C250024C21B /* logo-retina.png */,
+				3CF8866417371D7A007A10CE /* setup.png */,
+				3CF8866517371D7A007A10CE /* map.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
