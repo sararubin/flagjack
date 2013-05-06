@@ -17,14 +17,16 @@
 
 @interface FJMapViewController : UIViewController
 
-extern int ENEMY_RADIUS;
-extern int FLAG_RADIUS;
+extern const int ENEMY_RADIUS;
+extern const int FLAG_ZOOM_RADIUS;
+extern const int FLAG_PLOT_RADIUS;
 
 @property (nonatomic, retain) NSMutableDictionary *teammates;
 @property (nonatomic, retain) NSMutableDictionary *enemies;
 @property (nonatomic, retain) NSMutableDictionary *flags;
 
 @property (weak) NSTimer *timer;
+@property UILongPressGestureRecognizer *userPinDrop;
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 //@property (strong, nonatomic) CLLocationManager *locationManager;
