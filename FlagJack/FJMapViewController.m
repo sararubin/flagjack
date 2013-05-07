@@ -550,9 +550,13 @@ calloutAccessoryControlTapped:(UIControl *)control {
 }
 
 - (void)userPinDrop:(UIGestureRecognizer *)gestureRecognizer {
-    //if i am not a captain, I cannot place flag
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan && ![[FJGlobalData shared] isCaptain]) {
+    
+    //if i am not a captain or gestureRecognizer state has not begun, I cannot place flag
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan || ![[FJGlobalData shared] isCaptain]) {
+        
+        [self.mapView removeGestureRecognizer:_userPinDrop];
         return;
+        
     }
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
