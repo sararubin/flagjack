@@ -147,7 +147,7 @@
 				54265B4717151817006E7669 /* CoreLocation.framework */,
 				3C19B9AC170B805100BE626C /* AFNetworking */,
 				3C19B984170B804600BE626C /* FlagJack */,
-				54B57CA91739531E00868BE8 /* images */,
+				54B57CA91739531E00868BE8 /* Images */,
 				3C19B97D170B804600BE626C /* Frameworks */,
 				3C19B97C170B804600BE626C /* Products */,
 			);
@@ -247,7 +247,7 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
-		54B57CA91739531E00868BE8 /* images */ = {
+		54B57CA91739531E00868BE8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
 				54B57CAA1739531E00868BE8 /* blueDot.png */,
@@ -260,6 +260,7 @@
 				54B57CB11739531E00868BE8 /* setup.png */,
 				54B57CB21739531E00868BE8 /* texture.jpg */,
 			);
+			name = Images;
 			path = images;
 			sourceTree = "<group>";
 		};
