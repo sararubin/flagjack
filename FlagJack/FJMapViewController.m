@@ -260,14 +260,20 @@ const int FLAG_PLOT_RADIUS = 200;
 		if([responseStr isEqualToString:@"failure"]){
 			NSLog(@"failed to get flaglist");
 		}else{
+			
 			NSArray *tokens = [responseStr componentsSeparatedByString:@"!@!@"];
 			NSMutableArray *words = [[NSMutableArray alloc]initWithArray:tokens];
+			
 			[words removeObjectAtIndex: [words count]-1];
 			
 			NSMutableArray *titles = [[NSMutableArray alloc]init];
 			NSMutableArray *subs = [[NSMutableArray alloc]init];
 			NSMutableArray *lats = [[NSMutableArray alloc]init];
 			NSMutableArray *longs = [[NSMutableArray alloc]init];
+			
+			if([words count] == 0){
+				return;
+			}
 			
 			for(int i = 0; i < [words count]; i+=4){
 				[titles addObject: words[i]];
@@ -402,7 +408,6 @@ const int FLAG_PLOT_RADIUS = 200;
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             flagPinView.rightCalloutAccessoryView = rightButton;
         }//this is the button that will capture the flag, evenutally should become a change in view to bigger capture button
-            
         return flagPinView;
                 
     } else if ([annotation isKindOfClass:[FJTeammateAnnotation class]]) {
@@ -425,7 +430,7 @@ const int FLAG_PLOT_RADIUS = 200;
             //teammates are always blue to match MKUserAnnotation pin
             UIImage *teammateImage = [UIImage imageNamed:@"blueDot.png"];
             teammatePinView.image = teammateImage;
-            
+			
             return teammatePinView;
             
         } else {
@@ -461,7 +466,6 @@ const int FLAG_PLOT_RADIUS = 200;
         }
         return pinView;
     }
-
     
     return nil;
 }
@@ -546,7 +550,6 @@ calloutAccessoryControlTapped:(UIControl *)control {
 }
 
 - (void)userPinDrop:(UIGestureRecognizer *)gestureRecognizer {
-    return;
     //if i am not a captain, I cannot place flag
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan && ![[FJGlobalData shared] isCaptain]) {
         return;
@@ -562,8 +565,50 @@ calloutAccessoryControlTapped:(UIControl *)control {
     FJFlagAnnotation *flag = [[FJFlagAnnotation alloc] initWithCoordinate:touchCoord andTitle:flagTitle andSubtitle:teamColor];
     [self.mapView addAnnotation:flag];
     
-    //can only add one flag to map
-    [self.mapView removeGestureRecognizer:_userPinDrop];
+	//afnetworking post data
+	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/set-flag-location.php"];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:urlForPost];
+	
+	NSString *authCode = @"&&^#guer16n";
+	NSString *gameId = [NSString stringWithFormat:@"%d", [[FJGlobalData shared]gameId]];
+	NSString* latitude = [NSString stringWithFormat:@"%f", touchCoord.latitude];
+	NSString* longitude = [NSString stringWithFormat:@"%f", touchCoord.longitude];
+	
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: authCode, @"authorize", gameId, @"gameId", latitude, @"latitude", longitude, @"longitude", flagTitle, @"flagTitle", nil];
+	
+	[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+		if([responseStr isEqualToString:@"failure"]){
+			NSLog(@"failed to save name");
+		}else{
+			//can only add one flag to map
+			[self.mapView removeGestureRecognizer:_userPinDrop];
+		}
+		
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+	}];
+	
+	//remove after demonstration
+	flagTitle = @"Orange Flag";
+	latitude = [NSString stringWithFormat:@"%f", 40.7931];
+	longitude = [NSString stringWithFormat:@"%f", -73.9479];
+	
+	params = [NSDictionary dictionaryWithObjectsAndKeys: authCode, @"authorize", gameId, @"gameId", latitude, @"latitude", longitude, @"longitude", flagTitle, @"flagTitle", nil];
+
+	
+	[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+		if([responseStr isEqualToString:@"failure"]){
+			NSLog(@"failed to save name");
+		}else{
+			
+		}
+		
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+	}];
+	//end remove after demonstration
 }
 
 @end
