@@ -147,6 +147,7 @@
 				54265B4717151817006E7669 /* CoreLocation.framework */,
 				3C19B9AC170B805100BE626C /* AFNetworking */,
 				3C19B984170B804600BE626C /* FlagJack */,
+				54B57CA91739531E00868BE8 /* images */,
 				3C19B97D170B804600BE626C /* Frameworks */,
 				3C19B97C170B804600BE626C /* Products */,
 			);
@@ -202,7 +203,6 @@
 				3C15027F170CF14200F01AC6 /* FJWaitingRoomViewController.m */,
 				3C19B996170B804700BE626C /* MainStoryboard.storyboard */,
 				3C19B985170B804700BE626C /* Supporting Files */,
-				54B57CA91739531E00868BE8 /* images */,
 			);
 			path = FlagJack;
 			sourceTree = "<group>";
@@ -260,8 +260,7 @@
 				54B57CB11739531E00868BE8 /* setup.png */,
 				54B57CB21739531E00868BE8 /* texture.jpg */,
 			);
-			name = images;
-			path = ../images;
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
