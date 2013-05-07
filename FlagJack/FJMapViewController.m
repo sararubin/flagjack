@@ -31,7 +31,7 @@ const int FLAG_PLOT_RADIUS = 200;
     
     //add ui so that user can drop pin for flag
     _userPinDrop = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(userPinDrop:)];
-    _userPinDrop.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    _userPinDrop.minimumPressDuration = 1.0; //user needs to press for 1 seconds
     [self.mapView addGestureRecognizer:_userPinDrop];
     
     //set game "field"
