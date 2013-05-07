@@ -8,9 +8,9 @@
 
 #import "FJMapViewController.h"
 
-
 @implementation FJMapViewController
 
+//maybe calculate these with some math
 const int ENEMY_RADIUS = 200;
 const int FLAG_ZOOM_RADIUS = 500;
 const int FLAG_PLOT_RADIUS = 200;
@@ -27,14 +27,15 @@ const int FLAG_PLOT_RADIUS = 200;
 	_enemies = [[NSMutableDictionary alloc] init];
     
     //start timer
-    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(targetMethod:) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(targetMethod:) userInfo:nil repeats:YES];
     
     //add ui so that user can drop pin for flag
     _userPinDrop = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(userPinDrop:)];
-    _userPinDrop.minimumPressDuration = 2.0; //user needs to press for 2 seconds
+    _userPinDrop.minimumPressDuration = 1.0; //user needs to press for 1 seconds
     [self.mapView addGestureRecognizer:_userPinDrop];
     
     //set game "field"
+    /*TODO: maybe change this to a mkmaprect instead of a polygon so we can check to make sure player is in gameField*/
     CLLocationCoordinate2D coords[4] = {{40.813448,-73.960495}, {40.803314,-73.931999}, {40.7149, -73.9896}, {40.7382, -74.0079}};
     MKPolygon *gameFieldPoly = [MKPolygon polygonWithCoordinates:coords count:4];
     [_mapView addOverlay:gameFieldPoly];
@@ -56,13 +57,13 @@ const int FLAG_PLOT_RADIUS = 200;
         
 		
         NSString * myFlagColor;
-		if([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]){
+		if ([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]) {
             myFlagColor = @"Blue Flag";
-		}else{
+		} else {
             myFlagColor = @"Orange Flag";
 		}
 
-        for(id key in _flags) {
+        for (id key in _flags) {
             flag = [_flags objectForKey:key];
 			//for demonstration purposes, show all flags
 			[_mapView addAnnotation:flag];
@@ -102,7 +103,7 @@ const int FLAG_PLOT_RADIUS = 200;
         return;
     } else {
         [self getTeammates];
-        for(id key in _teammates) {
+        for (id key in _teammates) {
             [_mapView addAnnotation:[_teammates objectForKey:key]];
         }
     }
@@ -118,7 +119,7 @@ const int FLAG_PLOT_RADIUS = 200;
         FJEnemyAnnotation *enemy;
         CLLocationCoordinate2D myLocation = [[[_mapView userLocation] location] coordinate];
 
-        for(id key in _enemies) {
+        for (id key in _enemies) {
             enemy = [_enemies objectForKey:key];
 
             CLRegion *enemyRegion = [[CLRegion alloc] initCircularRegionWithCenter:enemy.coordinate radius:ENEMY_RADIUS identifier:@"enemyRegion"];
@@ -146,9 +147,9 @@ const int FLAG_PLOT_RADIUS = 200;
 	
 	[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-		if([responseStr isEqualToString:@"failure"]){
+		if ([responseStr isEqualToString:@"failure"]) {
 			NSLog(@"failed to get playerlist");
-		}else{
+		} else {
 			NSArray *tokens = [responseStr componentsSeparatedByString:@"!@!@"];
 			NSMutableArray *words = [[NSMutableArray alloc]initWithArray:tokens];
 			[words removeObjectAtIndex: [words count]-1];
@@ -159,7 +160,7 @@ const int FLAG_PLOT_RADIUS = 200;
 			NSMutableArray *longs = [[NSMutableArray alloc]init];
 			NSMutableArray *ids = [[NSMutableArray alloc]init];
                         						
-			for(int i = 0; i < [words count]; i+=5) {
+			for (int i = 0; i < [words count]; i+=5) {
 				[titles addObject: words[i]];//the person's name
 				[subs addObject: words[i+1]];//the person's team color
 				[lats addObject: words[i+2]];//the persons latitude
@@ -167,7 +168,7 @@ const int FLAG_PLOT_RADIUS = 200;
 				[ids addObject: words[i+4]];//the person's id
 			}
 			
-			for(int i = 0; i < [titles count]; i++) {
+			for (int i = 0; i < [titles count]; i++) {
 				CLLocationCoordinate2D playerCoord;
 				playerCoord.latitude = [lats[i] doubleValue];
 				playerCoord.longitude = [longs[i] doubleValue];
@@ -175,7 +176,7 @@ const int FLAG_PLOT_RADIUS = 200;
 				NSString* playerTeamColor = [NSString stringWithFormat:@"%@", subs[i]];
 				int playerId = [ids[i] intValue];
 				
-				if(![playerTeamColor isEqualToString:[[FJGlobalData shared] myTeamColor]] || (playerId == [[FJGlobalData shared] myId])){//if you're not a teammate, I don't get to see you on my map, and I'm not my teammate
+				if (![playerTeamColor isEqualToString:[[FJGlobalData shared] myTeamColor]] || (playerId == [[FJGlobalData shared] myId])) {//if you're not a teammate, I don't get to see you on my map, and I'm not my teammate
 					continue;
 				}
                 
@@ -203,9 +204,9 @@ const int FLAG_PLOT_RADIUS = 200;
 	
 	[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-		if([responseStr isEqualToString:@"failure"]){
+		if ([responseStr isEqualToString:@"failure"]) {
 			NSLog(@"failed to get playerlist");
-		}else{
+		} else {
 			NSArray *tokens = [responseStr componentsSeparatedByString:@"!@!@"];
 			NSMutableArray *words = [[NSMutableArray alloc]initWithArray:tokens];
 			[words removeObjectAtIndex: [words count]-1];
@@ -216,7 +217,7 @@ const int FLAG_PLOT_RADIUS = 200;
 			NSMutableArray *longs = [[NSMutableArray alloc]init];
 			NSMutableArray *ids = [[NSMutableArray alloc]init];
 			
-			for(int i = 0; i < [words count]; i+=5){
+			for (int i = 0; i < [words count]; i+=5) {
 				[titles addObject: words[i]];//the person's name
 				[subs addObject: words[i+1]];//the person's team color
 				[lats addObject: words[i+2]];//the persons latitude
@@ -224,7 +225,7 @@ const int FLAG_PLOT_RADIUS = 200;
 				[ids addObject: words[i+4]];//the person's id
 			}
 
-			for(int i = 0; i < [titles count]; i++){
+			for (int i = 0; i < [titles count]; i++) {
 				CLLocationCoordinate2D playerCoord;
 				playerCoord.latitude = [lats[i] doubleValue];
 				playerCoord.longitude = [longs[i] doubleValue];
@@ -232,7 +233,8 @@ const int FLAG_PLOT_RADIUS = 200;
 				NSString* playerTeamColor = [NSString stringWithFormat:@"%@", subs[i]];
 				int playerId = [ids[i] intValue];
 				
-				if([playerTeamColor isEqualToString:[[FJGlobalData shared] myTeamColor]] || (playerId == [[FJGlobalData shared] myId])){//if you're  a teammate, you're not an enemy, and I'm not an enemy
+				if ([playerTeamColor isEqualToString:[[FJGlobalData shared] myTeamColor]] || (playerId == [[FJGlobalData shared] myId])) {
+                    //if you're a teammate, you're not an enemy, and I'm not an enemy
 					continue;
 				}
                 
@@ -257,9 +259,9 @@ const int FLAG_PLOT_RADIUS = 200;
 	
 	[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-		if([responseStr isEqualToString:@"failure"]){
+		if ([responseStr isEqualToString:@"failure"]) {
 			NSLog(@"failed to get flaglist");
-		}else{
+		} else {
 			
 			NSArray *tokens = [responseStr componentsSeparatedByString:@"!@!@"];
 			NSMutableArray *words = [[NSMutableArray alloc]initWithArray:tokens];
@@ -271,11 +273,11 @@ const int FLAG_PLOT_RADIUS = 200;
 			NSMutableArray *lats = [[NSMutableArray alloc]init];
 			NSMutableArray *longs = [[NSMutableArray alloc]init];
 			
-			if([words count] == 0){
+			if ([words count] == 0) {
 				return;
 			}
 			
-			for(int i = 0; i < [words count]; i+=4){
+			for (int i = 0; i < [words count]; i+=4) {
 				[titles addObject: words[i]];
 				[subs addObject: words[i+1]];
 				[lats addObject: words[i+2]];
@@ -323,10 +325,9 @@ const int FLAG_PLOT_RADIUS = 200;
     //remove any existing annotations 
     for (id<MKAnnotation> annotation in _mapView.annotations) {
         
-        if(![annotation.title isEqualToString:@"Blue Flag"] && ![annotation.title isEqualToString:@"Orange Flag"]) {
+        if (![annotation.title isEqualToString:@"Blue Flag"] && ![annotation.title isEqualToString:@"Orange Flag"]) {
 			[_mapView removeAnnotation:annotation];
 		}
-
     }
 
     [self centerOnMe];
@@ -404,10 +405,13 @@ const int FLAG_PLOT_RADIUS = 200;
             flagColor = @"orange";
         } 			
             
-        if(![flagColor isEqualToString: [NSString stringWithFormat: @"%@", [[FJGlobalData shared] myTeamColor]]]){
+        if (![flagColor isEqualToString: [NSString stringWithFormat: @"%@", [[FJGlobalData shared] myTeamColor]]]) {
+            
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             flagPinView.rightCalloutAccessoryView = rightButton;
-        }//this is the button that will capture the flag, evenutally should become a change in view to bigger capture button
+            
+        } //this is the button that will capture the flag, evenutally should become a change in view to bigger capture button
+        
         return flagPinView;
                 
     } else if ([annotation isKindOfClass:[FJTeammateAnnotation class]]) {
@@ -422,6 +426,7 @@ const int FLAG_PLOT_RADIUS = 200;
             MKPinAnnotationView *teammatePinView = [[MKPinAnnotationView alloc]
                                                 initWithAnnotation:annotation reuseIdentifier:teammateAnnotationIdentifier];
             teammatePinView.canShowCallout = YES;
+            teammatePinView.calloutOffset = CGPointMake(0.1, 0.5);
             teammatePinView.animatesDrop = NO;
             
 			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
@@ -450,6 +455,7 @@ const int FLAG_PLOT_RADIUS = 200;
             MKPinAnnotationView *enemyPinView = [[MKPinAnnotationView alloc]
 													initWithAnnotation:annotation reuseIdentifier:enemyAnnotationIdentifier];
             enemyPinView.canShowCallout = YES;
+            enemyPinView.calloutOffset = CGPointMake(0.1, 0.5);
             enemyPinView.animatesDrop = NO;
             
             //enemy color is always orange
@@ -473,7 +479,7 @@ const int FLAG_PLOT_RADIUS = 200;
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control {
 	
-	if([view.annotation isKindOfClass:[FJFlagAnnotation class]]) { // for flags
+	if ([view.annotation isKindOfClass:[FJFlagAnnotation class]]) { // for flags
 		NSLog(@"you captured the flag");
 		//afnetworking post data
 		NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/change-flag-status.php"];
@@ -484,9 +490,9 @@ calloutAccessoryControlTapped:(UIControl *)control {
 		NSString *myId = [NSString stringWithFormat:@"%d", [[FJGlobalData shared]myId]];
 		NSString *flagStatus = [NSString stringWithFormat:@"%d", 2];
 		NSString * flagColor;
-		if([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]){
+		if ([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]) {
 			 flagColor = @"Orange Flag";
-		}else{
+		} else {
 			 flagColor = @"Blue Flag";
 		}
 		
@@ -494,9 +500,9 @@ calloutAccessoryControlTapped:(UIControl *)control {
 		
 		[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 			NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-			if([responseStr isEqualToString:@"failure"]){
+			if ([responseStr isEqualToString:@"failure"]) {
 				NSLog(@"failed to save name");
-			}else{
+			} else {
 				//alert them that they have frozen themselves
 				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Flag Stolen!" message:@"You are visible now visible to all players!" delegate:self cancelButtonTitle:@"RUN!" otherButtonTitles:nil];
 				[alert show];
@@ -506,13 +512,14 @@ calloutAccessoryControlTapped:(UIControl *)control {
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
 		}];
-	}else{
+	} else {
+        
 		int idToDisclose = -1;
-		if([view.annotation.title isEqualToString:@"Enemy"]){
+		if ([view.annotation.title isEqualToString:@"Enemy"]) {
 			FJEnemyAnnotation *enemyAnn = view.annotation;
 			idToDisclose = enemyAnn.ident;
 			[[FJGlobalData shared] setDiscloseEnemy:YES];
-		}else{
+		} else {
 			FJTeammateAnnotation *teammateAnn = view.annotation;
 			idToDisclose = teammateAnn.ident;
 			[[FJGlobalData shared] setDiscloseEnemy:NO];
@@ -535,24 +542,35 @@ calloutAccessoryControlTapped:(UIControl *)control {
 }
 
 - (void)targetMethod:(NSTimer*)theTimer {
+    
+    /*TODO: need to fix this so that when we pull new annotations, we don't keep adding annotations over the annotations that we're viewing*/
+    
     //remove any existing annotations (except for me)
     for (id<MKAnnotation> annotation in _mapView.annotations) {
         
-        if(!([annotation isKindOfClass:[MKUserLocation class]])) {
-			[_mapView removeAnnotation:annotation];
-		}
+        MKAnnotationView *annoView = [_mapView viewForAnnotation:annotation];
         
+        //do not remove me from map or any players I am looking at
+        if(!([annotation isKindOfClass:[MKUserLocation class]]) && !annoView.isSelected) {
+            
+			[_mapView removeAnnotation:annotation];
+            
+		}
     }
+    
     [self plotTeammates];
     [self plotFlags];
     [self plotEnemies];
-    
 }
 
 - (void)userPinDrop:(UIGestureRecognizer *)gestureRecognizer {
-    //if i am not a captain, I cannot place flag
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan && ![[FJGlobalData shared] isCaptain]) {
+    
+    //if i am not a captain or gestureRecognizer state has not begun, I cannot place flag
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan || ![[FJGlobalData shared] isCaptain]) {
+        
+        [self.mapView removeGestureRecognizer:_userPinDrop];
         return;
+        
     }
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
