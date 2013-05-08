@@ -495,7 +495,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 				NSLog(@"failed to save name");
 			} else {
 				//alert them that they have frozen themselves
-				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Flag Stolen!" message:@"You are visible now visible to all players!" delegate:self cancelButtonTitle:@"RUN!" otherButtonTitles:nil];
+				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Flag Stolen!" message:@"You are now visible to all players!" delegate:self cancelButtonTitle:@"RUN!" otherButtonTitles:nil];
 				[alert show];
 			}
 			
