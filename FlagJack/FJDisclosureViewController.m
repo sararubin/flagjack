@@ -105,6 +105,7 @@ numberOfRowsInComponent:(NSInteger)component
 			}else{
 				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Got 'Em!" message:@"Their map won't work for 3 minutes!" delegate:self cancelButtonTitle:@"awesome" otherButtonTitles:nil];
 				[alert show];
+				[self.view removeFromSuperview];
 				
 			}
 			
@@ -132,6 +133,7 @@ numberOfRowsInComponent:(NSInteger)component
 				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong!" message:@"You have frozen yourself for 5 minutes" delegate:self cancelButtonTitle:@"shoot, okay" otherButtonTitles:nil];
 				[alert show];
 				[[FJGlobalData shared]performSelector:@selector(unfreeze) withObject:NULL afterDelay:300];
+				[self.view removeFromSuperview];
 			}
 			
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
