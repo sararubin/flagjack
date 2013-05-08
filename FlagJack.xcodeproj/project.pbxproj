@@ -41,6 +41,7 @@
 		54265B4817151817006E7669 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54265B4717151817006E7669 /* CoreLocation.framework */; };
 		54419BE917135E7500039958 /* FJWaitingRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */; };
 		54419BEB1713628E00039958 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54419BEA1713628E00039958 /* MapKit.framework */; };
+		549C0AB61739FB2700E19BDB /* demoRoute.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 549C0AB51739FB2700E19BDB /* demoRoute.gpx */; };
 		54B57CB31739531E00868BE8 /* blueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B57CAA1739531E00868BE8 /* blueDot.png */; };
 		54B57CB41739531E00868BE8 /* blueFlag.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B57CAB1739531E00868BE8 /* blueFlag.png */; };
 		54B57CB51739531E00868BE8 /* logo-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 54B57CAC1739531E00868BE8 /* logo-normal.png */; };
@@ -113,6 +114,7 @@
 		54419BE717135E7500039958 /* FJWaitingRoomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJWaitingRoomTableViewCell.h; sourceTree = "<group>"; };
 		54419BE817135E7500039958 /* FJWaitingRoomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJWaitingRoomTableViewCell.m; sourceTree = "<group>"; };
 		54419BEA1713628E00039958 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		549C0AB51739FB2700E19BDB /* demoRoute.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = demoRoute.gpx; path = ../demoRoute.gpx; sourceTree = "<group>"; };
 		54B57CAA1739531E00868BE8 /* blueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueDot.png; sourceTree = "<group>"; };
 		54B57CAB1739531E00868BE8 /* blueFlag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueFlag.png; sourceTree = "<group>"; };
 		54B57CAC1739531E00868BE8 /* logo-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-normal.png"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		3C19B985170B804700BE626C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				549C0AB51739FB2700E19BDB /* demoRoute.gpx */,
 				3C19B986170B804700BE626C /* FlagJack-Info.plist */,
 				3C19B987170B804700BE626C /* InfoPlist.strings */,
 				3C19B98A170B804700BE626C /* main.m */,
@@ -331,6 +334,7 @@
 				54B57CB91739531E00868BE8 /* orangeFlag.png in Resources */,
 				54B57CBA1739531E00868BE8 /* setup.png in Resources */,
 				54B57CBB1739531E00868BE8 /* texture.jpg in Resources */,
+				549C0AB61739FB2700E19BDB /* demoRoute.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

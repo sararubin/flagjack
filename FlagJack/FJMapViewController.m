@@ -11,8 +11,8 @@
 @implementation FJMapViewController
 
 //maybe calculate these with some math
-const int ENEMY_RADIUS = 200;
-const int FLAG_ZOOM_RADIUS = 500;
+const int ENEMY_RADIUS = 300;
+const int FLAG_ZOOM_RADIUS = 750;
 const int FLAG_PLOT_RADIUS = 200;
 
 - (void)viewDidLoad
@@ -26,8 +26,7 @@ const int FLAG_PLOT_RADIUS = 200;
     _flags = [[NSMutableDictionary alloc] init];
 	_enemies = [[NSMutableDictionary alloc] init];
     
-    //start timer
-    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(targetMethod:) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateMap:) userInfo:nil repeats:YES];
     
     //add ui so that user can drop pin for flag
     _userPinDrop = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(userPinDrop:)];
@@ -54,8 +53,7 @@ const int FLAG_PLOT_RADIUS = 200;
         [self getFlags];
         FJFlagAnnotation *flag;
         CLLocationCoordinate2D myLocation = [[[_mapView userLocation] location] coordinate];
-        
-		
+        		
         NSString * myFlagColor;
 		if ([[[FJGlobalData shared] myTeamColor] isEqualToString:@"blue"]) {
             myFlagColor = @"Blue Flag";
@@ -65,13 +63,12 @@ const int FLAG_PLOT_RADIUS = 200;
 
         for (id key in _flags) {
             flag = [_flags objectForKey:key];
-			//for demonstration purposes, show all flags
-			[_mapView addAnnotation:flag];
 			
-			/*commented out for demonstration purposes
             //if my flag, always plot
             if ([flag.title isEqualToString:myFlagColor]) {
+                
                  [_mapView addAnnotation:flag];
+                
             } else {
                 //check if user is within range of enemy flag and zoom in and/or plot
                 
@@ -90,7 +87,7 @@ const int FLAG_PLOT_RADIUS = 200;
                     [_mapView addAnnotation:flag];
                 }
 			 
-            }*/
+            }
         }
     }
 }
@@ -124,11 +121,10 @@ const int FLAG_PLOT_RADIUS = 200;
 
             CLRegion *enemyRegion = [[CLRegion alloc] initCircularRegionWithCenter:enemy.coordinate radius:ENEMY_RADIUS identifier:@"enemyRegion"];
             
-			//commented out for demonstration purposes
-//            if ([enemyRegion containsCoordinate:myLocation]) {
+            if ([enemyRegion containsCoordinate:myLocation]) {
                 //if i am in enemy region, plot enemy
                 [_mapView addAnnotation:[_enemies objectForKey:key]];
-            //}
+            }
             
         }
     }
@@ -362,12 +358,7 @@ const int FLAG_PLOT_RADIUS = 200;
 			NSLog(@"failed to get playerlist");
 		} else {
             
-            //will have to keep track of player's progression through regions, so we don't spam them
-            //only updates user if progression index changes (if user leaves current region/gets further away or if user enters a smaller region/gets closer
-            
-            //if ([ENEMY_FLAG_REGION_1 containsCoordinate: userLocation.coordinate]) {
-                //send alert, zoom, whatever
-            //}
+           //update my location
             
             
 			
@@ -506,7 +497,6 @@ calloutAccessoryControlTapped:(UIControl *)control {
 				//alert them that they have frozen themselves
 				UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Flag Stolen!" message:@"You are visible now visible to all players!" delegate:self cancelButtonTitle:@"RUN!" otherButtonTitles:nil];
 				[alert show];
-				
 			}
 			
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -541,36 +531,43 @@ calloutAccessoryControlTapped:(UIControl *)control {
     return polygonView;
 }
 
-- (void)targetMethod:(NSTimer*)theTimer {
+- (void)updateMap:(NSTimer*)theTimer {
     
-    /*TODO: need to fix this so that when we pull new annotations, we don't keep adding annotations over the annotations that we're viewing*/
+    //TODO: need to fix this so that when we pull new annotations, we don't keep adding annotations over the annotations that we're viewing
     
     //remove any existing annotations (except for me)
     for (id<MKAnnotation> annotation in _mapView.annotations) {
         
         MKAnnotationView *annoView = [_mapView viewForAnnotation:annotation];
         
-        //do not remove me from map or any players I am looking at
-        if(!([annotation isKindOfClass:[MKUserLocation class]]) && !annoView.isSelected) {
+        //if i'm looking at someone on the map, don't remove them
+        if (annoView.isSelected) {
+            break;
+        }
+
+        //remove everyone but me from map
+        if ( !([annotation isKindOfClass:[MKUserLocation class]]) ) {
             
 			[_mapView removeAnnotation:annotation];
             
-		}
+        }
+        //if i'm looking at an annotation, return
+        //this is ugly, maybe we can fix this
+
     }
     
     [self plotTeammates];
     [self plotFlags];
     [self plotEnemies];
+        
+    
 }
 
 - (void)userPinDrop:(UIGestureRecognizer *)gestureRecognizer {
     
     //if i am not a captain or gestureRecognizer state has not begun, I cannot place flag
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan || ![[FJGlobalData shared] isCaptain]) {
-        
-        [self.mapView removeGestureRecognizer:_userPinDrop];
         return;
-        
     }
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.mapView];
@@ -596,9 +593,10 @@ calloutAccessoryControlTapped:(UIControl *)control {
 	
 	[httpClient postPath:@"" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-		if([responseStr isEqualToString:@"failure"]){
+        
+		if ([responseStr isEqualToString:@"failure"]) {
 			NSLog(@"failed to save name");
-		}else{
+		} else {
 			//can only add one flag to map
 			[self.mapView removeGestureRecognizer:_userPinDrop];
 		}
@@ -607,6 +605,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 		NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
 	}];
 	
+    //this just plots an orange flag after we plot our flag
 	//remove after demonstration
 	flagTitle = @"Orange Flag";
 	latitude = [NSString stringWithFormat:@"%f", 40.7931];
@@ -620,7 +619,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 		if([responseStr isEqualToString:@"failure"]){
 			NSLog(@"failed to save name");
 		}else{
-			
+
 		}
 		
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
