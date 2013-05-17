@@ -11,6 +11,8 @@
 #import "AFHTTPClient.h"
 #import "FJWaitingRoomTableViewCell.h"
 
+//this class allows the admin to assign players to teams
+//normal players (non-admins) just get to wait until the game has started
 @interface FJWaitingRoomViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *playerTableView;
 @property (weak, nonatomic) IBOutlet UILabel *gameCodeOut;

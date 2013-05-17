@@ -45,6 +45,7 @@ const int FLAG_PLOT_RADIUS = 200;
 
 }
 
+//this method grabs the flags from the database and plots them on your map
 - (void)plotFlags {
     //if i'm not frozen, do this stuff..else, do nothing
     if ([[FJGlobalData shared] isFrozen]) {
@@ -92,7 +93,7 @@ const int FLAG_PLOT_RADIUS = 200;
     }
 }
 
-
+//this method grabs all teammates from database and polots them on your map
 - (void)plotTeammates {
     
     //if i'm not frozen, do this stuff..else, do nothing
@@ -105,6 +106,7 @@ const int FLAG_PLOT_RADIUS = 200;
         }
     }
 }
+//this method grabs all enemies from database and polots them on your map
 - (void)plotEnemies{
     
     //if i'm not frozen, do this stuff..else, do nothing
@@ -130,6 +132,7 @@ const int FLAG_PLOT_RADIUS = 200;
     }
 }
 
+//this method helps plotTeammates by accessing database
 - (void)getTeammates {
 	
     //afnetworking post data
@@ -186,7 +189,7 @@ const int FLAG_PLOT_RADIUS = 200;
 		NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
 	}];
 }
-
+//this method helps plotEnemies by accessing database
 - (void)getEnemies {
     
     //afnetworking post data
@@ -243,7 +246,7 @@ const int FLAG_PLOT_RADIUS = 200;
 		NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
 	}];
 }
-
+//this method helps plotFlags by accessing database
 - (void)getFlags {
     //afnetworking post data
 	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/get-flags.php"];
@@ -310,12 +313,14 @@ const int FLAG_PLOT_RADIUS = 200;
     // Dispose of any resources that can be recreated.
 }
 
+//this method centers the Map View on your blinking blue dot
 - (void) centerOnMe{
     
 	[_mapView setCenterCoordinate:[[[_mapView userLocation]location] coordinate]];
     
 }
 
+//re-plot everything
 - (IBAction)refreshMap:(id)sender {
     
     //remove any existing annotations 
@@ -332,12 +337,14 @@ const int FLAG_PLOT_RADIUS = 200;
 	[self plotEnemies];
 }
 
+//this method outputs your current longitude and latitude
 - (IBAction)whereAmI:(id)sender {
 	CLLocation* current = _mapView.userLocation.location;
 	NSLog(@"%g and %g", current.coordinate.latitude, current.coordinate.longitude);
     [self centerOnMe];
 }
 
+//this method refreshes the map when your location changes, which is very often- good for having an up to date map
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
 	//afnetworking post data
 	NSURL *urlForPost = [NSURL URLWithString:@"http://lolliproject.com/flagjack/set-player-location.php"];
@@ -369,6 +376,7 @@ const int FLAG_PLOT_RADIUS = 200;
 
 }
 
+//teammates, enemies, and flags all look different, this assigns the view for each
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {    
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
 		return nil;
@@ -467,6 +475,7 @@ const int FLAG_PLOT_RADIUS = 200;
     return nil;
 }
 
+//this allows for freezing and stealing of the enemy flag
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control {
 	
@@ -523,6 +532,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
 	}
 }
 
+//this defines the playable area
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {
     MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:overlay];
@@ -531,6 +541,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
     return polygonView;
 }
 
+//refreshes the map view every time the timer fires
 - (void)updateMap:(NSTimer*)theTimer {
     
     //TODO: need to fix this so that when we pull new annotations, we don't keep adding annotations over the annotations that we're viewing
@@ -563,6 +574,7 @@ calloutAccessoryControlTapped:(UIControl *)control {
     
 }
 
+// this method allows the captain of the team to set the flag, ONCE
 - (void)userPinDrop:(UIGestureRecognizer *)gestureRecognizer {
     
     //if i am not a captain or gestureRecognizer state has not begun, I cannot place flag
