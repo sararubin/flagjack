@@ -10,6 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AFHTTPClient.h"
 
+
+//this is the global data that can be accessed through out the application
 @interface FJGlobalData : NSObject
 
 
@@ -34,7 +36,6 @@
 @property int idToDisclose;
 
 
-//should this also be a property?
 extern NSString *authCode;
 
 //these variables can change

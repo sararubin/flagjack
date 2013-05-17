@@ -141,5 +141,5 @@ numberOfRowsInComponent:(NSInteger)component
 		}];
 	}
 	
-}
+}// this method will put into the database that you have frozen your opponent
 @end

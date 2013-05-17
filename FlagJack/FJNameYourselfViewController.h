@@ -10,6 +10,7 @@
 #import "AFHTTPClient.h"
 #import "FJGlobalData.h"
 
+//this method allows for players to give themselves a custom name
 @interface FJNameYourselfViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *nameYourselfTextField;
 - (IBAction)toWaitingRoomButton:(id)sender;

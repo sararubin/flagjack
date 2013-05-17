@@ -10,6 +10,8 @@
 #import "AFHTTPClient.h"
 #import "FJGlobalData.h"
 
+
+//this class controls the join game screen
 @interface FJLobbyViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;

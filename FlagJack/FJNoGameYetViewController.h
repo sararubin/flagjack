@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+//this class keeps the map from the user until the game has started by the Administrator
 @interface FJNoGameYetViewController : UIViewController
 - (void)viewMap;
 

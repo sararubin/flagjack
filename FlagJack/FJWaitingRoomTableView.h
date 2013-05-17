@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+//this is a table that holds all current players that have joined
 @interface FJWaitingRoomTableView : UITableView
 
 @end
